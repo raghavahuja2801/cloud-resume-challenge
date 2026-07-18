@@ -104,6 +104,13 @@
       <a href="#extra"><span>04</span>Extracurricular</a>
       <a href="#education"><span>05</span>Education</a>
     </nav>
+
+    <div class="visitor-counter" id="visitor-counter" aria-live="polite">
+      <span class="visitor-counter__label">visitors so far</span>
+      <div class="visitor-counter__digits" id="visitor-count">
+        <span class="digit-loading">· · ·</span>
+      </div>
+    </div>
   </aside>
 
   <!-- ============ MAIN CONTENT ============ -->
@@ -239,5 +246,59 @@
   </main>
 </div>
 
+<script>
+  (function () {
+    const ENDPOINT = "https://ycscigtl83.execute-api.ap-south-1.amazonaws.com/visitor-count";
+    const el = document.getElementById("visitor-count");
+
+    function formatCount(n) {
+      return Number(n).toLocaleString("en-US");
+    }
+
+    // Pulls a numeric count out of whatever shape the API returns:
+    // a bare number, {count}, {visitors}, {visitorCount}, or a
+    // stringified JSON body (common with API Gateway/Lambda proxy).
+    function extractCount(data) {
+      if (typeof data === "number") return data;
+      if (typeof data === "string") {
+        const n = Number(data);
+        if (!Number.isNaN(n)) return n;
+        try { return extractCount(JSON.parse(data)); } catch (e) { return null; }
+      }
+      if (data && typeof data === "object") {
+        if (typeof data.body === "string" || typeof data.body === "object") {
+          const nested = extractCount(data.body);
+          if (nested !== null) return nested;
+        }
+        const candidates = ["count", "visitors", "visitorCount", "visitor_count", "value"];
+        for (const key of candidates) {
+          if (data[key] !== undefined) return extractCount(data[key]);
+        }
+      }
+      return null;
+    }
+
+    fetch(ENDPOINT)
+      .then((res) => {
+        if (!res.ok) throw new Error("Bad response: " + res.status);
+        return res.json();
+      })
+      .then((data) => {
+        const count = extractCount(data);
+        if (count === null) throw new Error("Unrecognized response shape");
+        el.innerHTML = "";
+        String(formatCount(count)).split("").forEach((ch) => {
+          const span = document.createElement("span");
+          span.className = ch === "," ? "digit-comma" : "digit";
+          span.textContent = ch;
+          el.appendChild(span);
+        });
+      })
+      .catch((err) => {
+        console.error("Visitor counter error:", err);
+        el.innerHTML = '<span class="digit-error">offline</span>';
+      });
+  })();
+</script>
 </body>
 </html>

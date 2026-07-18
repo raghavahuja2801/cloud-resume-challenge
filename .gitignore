@@ -25,3 +25,11 @@ terraform.rc
 
 # Lock file (keep this!)
 #! .terraform.lock.hcl
+
+
+# Node.js
+node_modules/
+
+backend/visitor-counter/node_modules/
+# Lambda package
+backend/visitor-counter/function.zip

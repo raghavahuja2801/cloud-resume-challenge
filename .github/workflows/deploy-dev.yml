@@ -21,10 +21,11 @@ jobs:
         run: |
          echo "Repository: ${{ github.repository }}"
          echo "Ref: ${{ github.ref }}"
-
-      - name: Debug OIDC Claims
-        uses: github/actions-oidc-debugger@v1
-
+      - name: Show Role ARN
+        run: |
+         echo "${ROLE}"
+          env:
+           ROLE: ${{ secrets.AWS_ROLE_ARN }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4

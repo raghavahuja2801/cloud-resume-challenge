@@ -123,6 +123,7 @@ button:focus-visible{
 .window-scene{
   border-radius:18px;
   overflow:hidden;
+  flex-shrink: 0;
   box-shadow:0 20px 50px -20px rgba(0,0,0,.6), 0 0 0 1px var(--card-border);
 }
 .scene-svg{display:block; width:100%; height:auto;}

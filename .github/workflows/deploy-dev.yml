@@ -1,0 +1,80 @@
+name: Deploy Dev
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ap-south-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: terraform
+        run: |
+          terraform init
+
+      - name: Terraform Format
+        working-directory: terraform
+        run: |
+          terraform fmt -check -recursive
+
+      - name: Terraform Validate
+        working-directory: terraform
+        run: |
+          terraform validate
+
+      - name: Package Lambda
+        working-directory: backend/visitor-counter
+        run: |
+          rm -f function.zip
+          zip -r function.zip . \
+            -x "*.git*" \
+            -x "node_modules/*"
+
+      - name: Terraform Plan
+        working-directory: terraform
+        run: |
+          terraform plan \
+            -var-file=environments/dev/terraform.tfvars
+
+      - name: Terraform Apply
+        working-directory: terraform
+        run: |
+          terraform apply \
+            -auto-approve \
+            -var-file=environments/dev/terraform.tfvars
+
+      - name: Get Terraform Outputs
+        id: tf
+        working-directory: terraform
+        run: |
+          echo "bucket=$(terraform output -raw bucket_name)" >> $GITHUB_OUTPUT
+          echo "distribution=$(terraform output -raw cloudfront_distribution_id)" >> $GITHUB_OUTPUT
+
+      - name: Deploy Frontend
+        run: |
+          aws s3 sync frontend/ s3://${{ steps.tf.outputs.bucket }} --delete
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ steps.tf.outputs.distribution }} \
+            --paths "/*"

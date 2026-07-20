@@ -1,7 +1,7 @@
 // src/pages/UIDemo.jsx
 import './UIDemo.css';
 
-const UIDemo = () => {
+const UIDemo = ({ isDark, toggleTheme }) => {
   return (
     <div className="ui-demo">
       <div className="demo-header">

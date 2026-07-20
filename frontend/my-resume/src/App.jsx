@@ -21,8 +21,8 @@ const AppContent = ({ isDark, toggleTheme }) => {
       
       <div style={{ paddingTop: '72px' }}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/ui-demo" element={<UIDemo />} />
+          <Route path="/" element={<Home isDark={isDark} toggleTheme={toggleTheme} />} />
+          <Route path="/ui-demo" element={<UIDemo isDark={isDark} toggleTheme={toggleTheme} />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>

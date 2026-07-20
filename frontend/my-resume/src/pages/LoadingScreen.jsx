@@ -5,21 +5,16 @@ import { useEffect, useState, useRef } from "react";
  * LoadingScreen
  * A ~2.4s terminal-boot / glitch-out loader.
  *
- * Usage in your real app (App.jsx):
- *
- *   const [loading, setLoading] = useState(true);
- *   return (
- *     <>
- *       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
- *       {!loading && <YourRealSite />}
- *     </>
- *   );
- *
  * Props:
  *   onComplete  - called once the boot + glitch-out sequence finishes
  *   duration    - total lifetime in ms (default 2400)
+ *   isDark      - current theme state (optional)
  */
-export default function LoadingScreen({ onComplete = () => {}, duration = 2400 }) {
+export default function LoadingScreen({ 
+  onComplete = () => {}, 
+  duration = 2400,
+  isDark = false // Add this prop
+}) {
   const [phase, setPhase] = useState("boot"); // boot -> glitch -> gone
   const [visibleLines, setVisibleLines] = useState(0);
   const doneRef = useRef(false);
@@ -31,6 +26,15 @@ export default function LoadingScreen({ onComplete = () => {}, duration = 2400 }
     "compiling ui ............ ok",
     "$ ready",
   ];
+
+  // Apply theme to document during loading
+  useEffect(() => {
+    const theme = isDark ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    // Also set a class for the loading screen itself
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('light', !isDark);
+  }, [isDark]);
 
   useEffect(() => {
     // stagger the boot lines across the first ~55% of the duration
@@ -57,7 +61,7 @@ export default function LoadingScreen({ onComplete = () => {}, duration = 2400 }
       clearTimeout(glitchTimer);
       clearTimeout(endTimer);
     };
-  }, [duration]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [duration, onComplete]); // Added onComplete to deps
 
   if (phase === "gone") return null;
 
@@ -123,14 +127,15 @@ const css = `
 /* ---------- ambient noise + scanlines ---------- */
 .ls-noise{
   position: absolute; inset: 0;
-  background-image: radial-gradient(var(--color-text-secondary, rgba(0,0,0,0.05)) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
   background-size: 3px 3px;
   opacity: 0.5;
   pointer-events: none;
 }
 
 [data-theme="dark"] .ls-noise {
-  background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  opacity: 0.5;
 }
 
 .ls-scanlines{

@@ -3,20 +3,7 @@ import React, { useState, useEffect } from 'react';
 import InfraAnimation from './InfraAnimation'
 import './Home.css';
 
-const Home = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setIsDarkMode(prefersDark);
-    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = isDarkMode ? 'light' : 'dark';
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.setAttribute('data-theme', newTheme);
-  };
+const Home = ({ isDark, toggleTheme }) => {
 
   return (
     <>

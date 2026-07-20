@@ -502,16 +502,21 @@
 /* Add to Home.css - Section styles */
 
 .section {
-  padding: 6rem 0;
+  padding: 4rem 24px;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 .section-content {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 90%; /* Increased from 800px */
   width: 100%;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .section-title {
@@ -520,25 +525,40 @@
   color: var(--color-text-primary);
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
+  position: relative;
+  z-index: 3; /* Above pixels (z-index: 2) */
+  text-align: left; /* Or center if you want */
 }
 
 .section-text {
   font-size: 1.1rem;
   color: var(--color-text-secondary);
   line-height: 1.8;
+  text-align: left;
+   position: relative;
+  z-index: 3; /* Above pixels (z-index: 2) */
 }
 
+/* Mobile - Full width */
 @media (max-width: 768px) {
   .section {
-    padding: 4rem 0;
-    min-height: auto;
+    padding: 3rem 12px; /* Reduced horizontal padding */
   }
 
-  .section-title {
-    font-size: 2rem;
+  .section-content {
+    max-width: 100%;
+    padding: 0 4px;
   }
 
-  .section-text {
-    font-size: 1rem;
+  /* ... rest of mobile styles ... */
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 8px;
+  }
+
+  .section-content {
+    padding: 0 2px;
   }
 }

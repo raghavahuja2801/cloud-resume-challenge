@@ -1,6 +1,8 @@
 // src/pages/home/Home.jsx
 import React, { useState, useEffect } from 'react';
 import InfraAnimation from './InfraAnimation'
+import ExperienceSection from './Experience';
+import SkillsSection from './Skills';
 import './Home.css';
 
 const Home = ({ isDark, toggleTheme }) => {
@@ -73,24 +75,9 @@ const Home = ({ isDark, toggleTheme }) => {
           </div>
         </section>
 
-        {/* About Section */}
-        <section id="about" className="section">
-          <div className="section-content">
-            <h2 className="section-title">About</h2>
-            <p className="section-text">
-              Add your about content here...
-            </p>
-          </div>
-        </section>
-
         {/* Experience Section */}
         <section id="experience" className="section">
-          <div className="section-content">
-            <h2 className="section-title">Experience</h2>
-            <p className="section-text">
-              Add your experience content here...
-            </p>
-          </div>
+          <ExperienceSection />
         </section>
 
         {/* Projects Section */}
@@ -105,12 +92,7 @@ const Home = ({ isDark, toggleTheme }) => {
 
         {/* Skills Section */}
         <section id="skills" className="section">
-          <div className="section-content">
-            <h2 className="section-title">Skills</h2>
-            <p className="section-text">
-              Add your skills content here...
-            </p>
-          </div>
+          <SkillsSection />
         </section>
 
         {/* Resume Section */}

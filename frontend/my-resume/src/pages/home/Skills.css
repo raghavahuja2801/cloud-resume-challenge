@@ -1,0 +1,238 @@
+/* src/pages/home/Skills.css */
+
+.skills-section {
+  padding: 80px 24px;
+  background: transparent;
+  scroll-margin-top: 72px;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-container {
+  max-width: 90%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 3;
+}
+
+.skills-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-dusty-blue);
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+.skills-subtitle {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+/* ===== SKILLS PILLS (TABS) ===== */
+.skills-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.skill-pill {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-primary);
+  padding: 8px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.skill-pill:hover {
+  border-color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+}
+
+.skill-pill.active {
+  background: var(--accent-dusty-blue);
+  border-color: var(--accent-dusty-blue);
+  color: var(--color-text-inverse);
+  box-shadow: 0 4px 12px rgba(143, 168, 201, 0.3);
+}
+
+/* ===== SKILLS CARDS - 3 columns on desktop ===== */
+.skills-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.skill-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 12px;
+  padding: 20px 22px;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-card:hover {
+  border-color: var(--accent-dusty-blue);
+  box-shadow: 0 4px 20px rgba(143, 168, 201, 0.08);
+  transform: translateY(-2px);
+}
+
+.skill-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 8px 0;
+}
+
+.skill-description {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 10px 0;
+  flex: 1;
+}
+
+.skill-experience {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+  padding: 8px 12px;
+  background: var(--color-bg-primary);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent-dusty-blue);
+}
+
+.skill-experience::before {
+  content: '💼 ';
+}
+
+/* src/pages/home/Skills.css - Mobile section */
+
+/* ===== RESPONSIVE - TABLET & MOBILE ===== */
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 60px 12px;
+  }
+
+  .skills-container {
+    max-width: 100%;
+    padding: 0 4px;
+  }
+
+  .skills-title {
+    font-size: 2rem;
+  }
+
+  .skills-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+  }
+
+  .skills-pills {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .skill-pill {
+    font-size: 0.7rem;
+    padding: 5px 14px;
+  }
+
+  .skills-cards-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .skill-card {
+    padding: 16px 16px;
+    border-radius: 8px;
+  }
+
+  .skill-name {
+    font-size: 0.9rem;
+  }
+
+  .skill-description {
+    font-size: 0.8rem;
+  }
+
+  .skill-experience {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .skills-section {
+    padding: 40px 8px;
+  }
+
+  .skills-container {
+    padding: 0 2px;
+  }
+
+  .skills-title {
+    font-size: 1.6rem;
+  }
+
+  .skills-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+  }
+
+  .skill-pill {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+
+  .skill-card {
+    padding: 14px 12px;
+  }
+
+  .skill-name {
+    font-size: 0.85rem;
+  }
+
+  .skill-description {
+    font-size: 0.75rem;
+  }
+
+  .skill-experience {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+}

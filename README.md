@@ -5,9 +5,10 @@
 ![AWS](https://img.shields.io/badge/AWS-Serverless-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-## 📖 Table of Contents
+## Table of Contents
 - [Overview](#overview)
 - [Architecture](#architecture)
+- [Screenshots](#screenshots)
 - [Quick Start](#quick-start)
 - [Project Structure](#project-structure)
 - [Technologies](#technologies)
@@ -16,237 +17,174 @@
 - [Security](#security)
 - [Future Improvements](#future-improvements)
 - [Troubleshooting](#troubleshooting)
-
----
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Overview
 
-A serverless cloud-native resume website featuring:
-- **Static Website** - S3 + CloudFront with custom domain
-- **Visitor Counter** - Lambda + API Gateway + DynamoDB
-- **Infrastructure as Code** - Terraform with remote state
-- **CI/CD** - GitHub Actions automated deployments
-- **Multi-Environment** - Isolated dev/staging/prod
-- **Monitoring** - CloudWatch dashboards and alarms
+This project is a serverless resume website built on AWS. It includes a static frontend, a visitor counter API, and infrastructure managed with Terraform.
 
-**Live Demo:** https://d35hputl9rebt8.cloudfront.net/
+Key components:
+- Static website hosting with S3 and CloudFront
+- Visitor counter with Lambda, API Gateway, and DynamoDB
+- Infrastructure as code with Terraform remote state
+- CI/CD with GitHub Actions
+- Separate dev, staging, and production environments
 
----
+Live demo: https://d35hputl9rebt8.cloudfront.net/
 
 ## Architecture
 
-### High-Level Diagram
+![User flow](docs/user-flow.png)
+
+## Screenshots
 
 
-
-
-
-### Infrastructure as Code Structure
-
-```bash
-terraform/
-├── environments/
-│ ├── dev/ # Development environment
-│ ├── staging/ # Staging environment
-│ └── prod/ # Production environment
-└── modules/
-├── s3-website/ # S3 bucket module
-├── cloudfront/ # CDN module
-├── acm/ # Certificate module
-├── route53/ # DNS module
-├── api-gateway/ # API module
-├── lambda/ # Function module
-└── dynamodb/ # Database module
-```
-
-
----
+![Homepage](docs/screenshots/homepage.png)
 
 ## Quick Start
 
 ### Prerequisites
 
-```bash
-# Required tools
-- Terraform >= 1.5.0
-- AWS CLI >= 2.0
-- Python >= 3.9
+- Terraform 1.5 or later
+- AWS CLI 2.x
+- Python 3.9 or later
 - Git
-- Node.js >= 16 (for frontend builds)
-```
+- Node.js 16 or later for frontend builds
 
-### Step 1: Clone Repo:
+### 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/cloud-resume-challenge.git
 cd cloud-resume-challenge
 ```
 
-### Step 2: Configure AWS
-```bash 
-# Configure AWS CLI
+### 2. Configure AWS credentials
+
+```bash
 aws configure
 ```
 
-### Step 3: Bootstrap Terraform Backend
+### 3. Bootstrap the Terraform backend
 
 ```bash
 cd terraform/environments/dev
-
-# Initialize Terraform
 terraform init
-
-# Create S3 bucket and DynamoDB table for state
 terraform apply -target=module.backend
 ```
 
-### Step 4: Deploy Infrastructure
-```bash
-# Plan the deployment
-terraform plan -var-file="dev.tfvars"
+### 4. Deploy the infrastructure
 
-# Apply the deployment
+```bash
+terraform plan -var-file="dev.tfvars"
 terraform apply -var-file="dev.tfvars" -auto-approve
 ```
 
-### Step 5: Verify Deployment
+### 5. Verify the deployment
+
 ```bash
-# Check website
 curl https://dev.resume.your-domain.com
-
-# Check API
 curl https://api.your-domain.com/visitor-count
-
-# Check CloudWatch logs
 aws logs describe-log-groups --log-group-name-prefix /aws/lambda/resume
 ```
----------
+
 ## Project Structure
+
 ```bash
 cloud-resume-challenge/
-│
-├── .github/
-│   └── workflows/
-│       └── deploy.yml                 # CI/CD pipeline
-│
+├── backend/
+│   └── visitor-counter/
+├── frontend/
 ├── terraform/
 │   ├── environments/
 │   │   ├── dev/
-│   │   │   ├── main.tf               # Root module
-│   │   │   ├── variables.tf
-│   │   │   ├── outputs.tf
-│   │   │   └── dev.tfvars            # Env-specific values
-│   │   ├── staging/                  # Same structure
-│   │   └── prod/                     # Same structure
-│   │
+│   │   ├── prod/
+│   │   └── stage/
 │   └── modules/
-│       ├── s3-website/
-│       ├── cloudfront/
 │       ├── acm/
+│       ├── apigateway/
+│       ├── cloudfront/
+│       ├── dynamodb/
+│       ├── iam/
+│       ├── lambda/
+│       ├── networking/
 │       ├── route53/
-│       ├── api-gateway/
-│       ├── lambda-function/
-│       └── dynamodb-table/
-│
-├── frontend/
-│   ├── index.html                    # Resume HTML
-│   ├── style.css                     # Styling
-│   └── script.js                     # Visitor counter logic
-│
-├── backend/
-│   ├── visitor-counter/
-│   │   ├── lambda_function.py        # Main Lambda code
-│   │   ├── requirements.txt          # Dependencies
-│   │   └── tests/                    # Unit tests
-│   └── deployment/
-│       └── package.sh               # Packaging script
-│
-├── docs/
-│   ├── architecture.md
-│   ├── deployment-guide.md
-│   └── troubleshooting.md
-│
+│       └── s3/
 └── README.md
 ```
 
----
 ## Technologies
 
 ### AWS Services
-AWS | Services
-Service	  |Purpose
-S3	  |Static website hosting with encryption
-CloudFront	|CDN with HTTPS and caching
-Route53	|DNS and custom domain management
-ACM	|SSL/TLS certificates
-API Gateway	|REST API for visitor counter
-Lambda	|Serverless compute (Python runtime)
-DynamoDB	|Visitor count storage
-CloudWatch	|Monitoring, logging, alarms
-IAM	|Identity and access management
 
+- S3 for static website hosting
+- CloudFront for CDN and HTTPS
+- Route 53 for DNS and domain management
+- ACM for TLS certificates
+- API Gateway for the visitor counter API
+- Lambda for serverless compute
+- DynamoDB for visitor count storage
+- CloudWatch for logging and monitoring
+- IAM for access control
 
-### Tools & Frameworks
-Tool	|Purpose
-Terraform	|Infrastructure as Code
-GitHub Actions	|CI/CD automation
-Python 3.9+	|Lambda runtime
-HTML/CSS/JS	|Frontend
-Pre-commit	|Code formatting
+### Tools and Frameworks
 
-## CI/CD
+- Terraform for infrastructure as code
+- GitHub Actions for CI/CD
+- Python for the Lambda function
+- HTML, CSS, and JavaScript for the frontend
 
-### Pipeline
-```bash
-┌─────────────────────────────────────────────────────────────┐
-│ 1. Lint & Format                                           │
-│    ├── terraform fmt -check                               │
-│    └── terraform validate                                 │
-├─────────────────────────────────────────────────────────────┤
-│ 2. Security Scan                                           │
-│    └── tfsec (Terraform security scanner)                 │
-├─────────────────────────────────────────────────────────────┤
-│ 3. Terraform Plan                                          │
-│    ├── Plan: dev                                         │
-│    ├── Plan: staging                                     │
-│    └── Plan: prod                                        │
-├─────────────────────────────────────────────────────────────┤
-│ 4. Deploy to Dev (auto)                                   │
-│    ├── terraform apply                                   │
-│    ├── Upload Lambda package                             │
-│    └── Invalidate CloudFront cache                       │
-├─────────────────────────────────────────────────────────────┤
-│ 5. Deploy to Staging (auto)                               │
-│    └── terraform apply                                   │
-├─────────────────────────────────────────────────────────────┤
-│ 6. Deploy to Prod (manual approval)                       │
-│    └── terraform apply                                   │
-└─────────────────────────────────────────────────────────────┘
-```
+## CI/CD Pipeline
 
-Contributing
-Fork the repository
+The pipeline is organized into these stages:
 
-Create feature branch (git checkout -b feature/AmazingFeature)
+1. Format and validation checks with `terraform fmt` and `terraform validate`
+2. Security scanning with `tfsec`
+3. Terraform planning for dev, staging, and production
+4. Automated deployment to dev
+5. Automated deployment to staging
+6. Manual approval before production deployment
 
-Commit changes (git commit -m 'Add AmazingFeature')
+## Monitoring
 
-Push branch (git push origin feature/AmazingFeature)
+- CloudWatch logs for Lambda execution
+- CloudWatch dashboards for operational visibility
+- Alarms for service health and error tracking
 
-Open Pull Request
+## Security
 
-License
-This project is licensed under the MIT License - see LICENSE file.
+- Least-privilege IAM roles and policies
+- TLS termination through CloudFront and ACM
+- Environment isolation across dev, staging, and production
+- Terraform-managed infrastructure for consistent configuration
 
-Author
-Your Name
+## Future Improvements
 
-🔗 LinkedIn: your-linkedin
+- Add automated tests for the backend function
+- Expand observability with more granular CloudWatch metrics
+- Add deployment previews for feature branches
+- Improve frontend accessibility and performance audits
 
-🐦 Twitter: @yourhandle
+## Troubleshooting
 
-📧 Email: your.email@example.com
+If deployment fails, check the following first:
 
-🌐 Portfolio: https://resume.your-domain.com
+- AWS credentials and account permissions
+- Terraform backend configuration
+- CloudWatch logs for Lambda errors
+- API Gateway and DynamoDB permissions
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push the branch
+5. Open a pull request
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 
 

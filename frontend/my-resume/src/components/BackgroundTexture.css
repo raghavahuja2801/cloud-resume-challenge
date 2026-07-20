@@ -1,0 +1,120 @@
+/* src/components/BackgroundTexture.css */
+
+.bg-texture-wrapper {
+  position: relative;
+  min-height: 100vh;
+  background: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+/* ----- NOISE OVERLAY ----- */
+.bg-noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: radial-gradient(
+    var(--color-text-secondary) 1px,
+    transparent 1px
+  );
+  background-size: 3px 3px;
+  mix-blend-mode: overlay;
+}
+
+/* Dark mode noise */
+[data-theme="dark"] .bg-noise {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px
+  );
+  opacity: 0.5;
+}
+
+/* ----- SCANLINES OVERLAY ----- */
+.bg-scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    rgba(0, 0, 0, 0.03) 1px,
+    rgba(0, 0, 0, 0.03) 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+/* Dark mode scanlines */
+[data-theme="dark"] .bg-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    rgba(255, 255, 255, 0.02) 1px,
+    rgba(255, 255, 255, 0.02) 3px
+  );
+}
+
+/* ----- VIGNETTE OVERLAY ----- */
+.bg-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.02) 100%
+  );
+}
+
+[data-theme="dark"] .bg-vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+/* ----- CONTENT ----- */
+.bg-content {
+  position: relative;
+  z-index: 3;
+}
+
+/* Optional: Animation for subtle movement */
+@keyframes noiseShift {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-0.5px, 0.5px);
+  }
+  40% {
+    transform: translate(0.5px, -0.5px);
+  }
+  60% {
+    transform: translate(-0.3px, -0.3px);
+  }
+  80% {
+    transform: translate(0.3px, 0.3px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Optional: Enable subtle animation on hover */
+.bg-texture-wrapper:hover .bg-noise {
+  animation: noiseShift 8s steps(3) infinite;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .bg-texture-wrapper:hover .bg-noise {
+    animation: none;
+  }
+}

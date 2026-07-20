@@ -29,6 +29,10 @@ terraform.rc
 # Node.js
 node_modules/
 
+frontend/node_modules/
+frontend/my-resume/node_modules/
+
+
 backend/visitor-counter/node_modules/
 # Lambda package
 backend/visitor-counter/function.zip

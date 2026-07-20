@@ -43,6 +43,7 @@ A serverless cloud-native resume website featuring:
 
 ### Infrastructure as Code Structure
 
+```bash
 terraform/
 ├── environments/
 │ ├── dev/ # Development environment
@@ -56,7 +57,7 @@ terraform/
 ├── api-gateway/ # API module
 ├── lambda/ # Function module
 └── dynamodb/ # Database module
-
+```
 
 
 ---
@@ -72,12 +73,13 @@ terraform/
 - Python >= 3.9
 - Git
 - Node.js >= 16 (for frontend builds)
-
+```
 
 ### Step 1: Clone Repo:
+```bash
 git clone https://github.com/yourusername/cloud-resume-challenge.git
 cd cloud-resume-challenge
-
+```
 
 ### Step 2: Configure AWS
 ```bash 

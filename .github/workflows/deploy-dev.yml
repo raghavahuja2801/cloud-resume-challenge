@@ -17,11 +17,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Debug GitHub Context
-        run: |
-         echo "Repository: ${{ github.repository }}"
-         echo "Ref: ${{ github.ref }}"
-      
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -74,9 +69,30 @@ jobs:
           echo "bucket=$(terraform output -raw bucket_name)" >> $GITHUB_OUTPUT
           echo "distribution=$(terraform output -raw cloudfront_distribution_id)" >> $GITHUB_OUTPUT
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: frontend/my-resume/package-lock.json
+
+      - name: Install Dependencies
+        working-directory: frontend/my-resume
+        run: npm ci
+
+      - name: Build Frontend
+        working-directory: frontend/my-resume
+        run: npm run build
+
+      - name: Verify Build Output
+        run: |
+          echo "Checking build output..."
+          ls -la frontend/my-resume/dist/
+          test -f frontend/my-resume/dist/index.html || (echo "Build failed - index.html missing" && exit 1)
+
       - name: Deploy Frontend
         run: |
-          aws s3 sync frontend/ s3://${{ steps.tf.outputs.bucket }} --delete
+          aws s3 sync frontend/my-resume/dist/ s3://${{ steps.tf.outputs.bucket }} --delete
 
       - name: Invalidate CloudFront
         run: |

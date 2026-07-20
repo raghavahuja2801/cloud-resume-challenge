@@ -1,0 +1,212 @@
+/* src/styles/theme.css */
+
+/* ============================================
+   LEVEL 1: RAW VALUES (Base Colors)
+   ============================================ */
+
+:root {
+  /* ----- LIGHT MODE RAW VALUES ----- */
+  --light-bg-background: #FAFAFA;
+  --light-bg-surface: #FFFCF8;
+  --light-bg-elevated: #FFFFFF;
+  
+  --light-text-primary: #161616;
+  --light-text-secondary: #5F5F5F;
+  --light-border: #DDD9D2;
+
+  /* ----- DARK MODE RAW VALUES ----- */
+  --dark-bg-background: #0E0E0D;
+  --dark-bg-surface: #171716;
+  --dark-bg-elevated: #1D1D1C;
+  
+  --dark-text-primary: #F3F2EF;
+  --dark-text-secondary: #B5B3AE;
+  --dark-border: #30302F;
+
+  /* ----- ACCENT PALETTE (Shared) ----- */
+  --accent-sage: #8EA58C;
+  --accent-sage-hover: #7A8F78;
+  
+  --accent-dusty-blue: #8FA8C9;
+  --accent-dusty-blue-hover: #7B94B5;
+  
+  --accent-lavender: #A69BC8;
+  --accent-lavender-hover: #9287B4;
+  
+  --accent-terracotta: #C79273;
+  --accent-terracotta-hover: #B37E5F;
+  
+  --accent-amber: #D4B96E;
+  --accent-amber-hover: #C0A55A;
+  
+  --accent-rose: #C99BA8;
+  --accent-rose-hover: #B58794;
+}
+
+/* ============================================
+   LEVEL 2: SEMANTIC TOKENS
+   ============================================ */
+
+/* ----- LIGHT MODE (Default) ----- */
+:root {
+  /* Backgrounds */
+  --color-bg-primary: var(--light-bg-background);
+  --color-bg-surface: var(--light-bg-surface);
+  --color-bg-elevated: var(--light-bg-elevated);
+  --color-bg-card: var(--light-bg-surface);
+  
+  /* Text */
+  --color-text-primary: var(--light-text-primary);
+  --color-text-secondary: var(--light-text-secondary);
+  --color-text-inverse: #FFFFFF;
+  
+  /* Borders */
+  --color-border-primary: var(--light-border);
+  --color-border-secondary: var(--light-border);
+  
+  /* Accents (mapped to semantic use cases) */
+  --color-accent-success: var(--accent-sage);
+  --color-accent-link: var(--accent-dusty-blue);
+  --color-accent-button: var(--accent-lavender);
+  --color-accent-hover: var(--accent-terracotta);
+  --color-accent-award: var(--accent-amber);
+  --color-accent-rare: var(--accent-rose);
+}
+
+/* ----- DARK MODE ----- */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --color-bg-primary: var(--dark-bg-background);
+  --color-bg-surface: var(--dark-bg-surface);
+  --color-bg-elevated: var(--dark-bg-elevated);
+  --color-bg-card: var(--dark-bg-surface);
+  
+  /* Text */
+  --color-text-primary: var(--dark-text-primary);
+  --color-text-secondary: var(--dark-text-secondary);
+  --color-text-inverse: #0E0E0D;
+  
+  /* Borders */
+  --color-border-primary: var(--dark-border);
+  --color-border-secondary: var(--dark-border);
+  
+  /* Accents (same semantic mapping) */
+  --color-accent-success: var(--accent-sage);
+  --color-accent-link: var(--accent-dusty-blue);
+  --color-accent-button: var(--accent-lavender);
+  --color-accent-hover: var(--accent-terracotta);
+  --color-accent-award: var(--accent-amber);
+  --color-accent-rare: var(--accent-rose);
+}
+
+/* ============================================
+   LEVEL 3: COMPONENT TOKENS
+   ============================================ */
+
+:root {
+  /* ----- BUTTONS ----- */
+  --button-primary-bg: var(--color-accent-button);
+  --button-primary-text: var(--color-text-inverse);
+  --button-primary-hover: var(--accent-lavender-hover);
+  
+  --button-secondary-bg: transparent;
+  --button-secondary-text: var(--color-text-primary);
+  --button-secondary-border: var(--color-border-primary);
+  --button-secondary-hover: var(--color-bg-surface);
+  
+  --button-success-bg: var(--color-accent-success);
+  --button-success-hover: var(--accent-sage-hover);
+  
+  --button-link-color: var(--color-accent-link);
+  --button-link-hover: var(--accent-dusty-blue-hover);
+
+  /* ----- CARDS ----- */
+  --card-bg: var(--color-bg-surface);
+  --card-border: var(--color-border-primary);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+  
+  /* ----- INPUTS ----- */
+  --input-bg: var(--color-bg-surface);
+  --input-border: var(--color-border-primary);
+  --input-text: var(--color-text-primary);
+  --input-placeholder: var(--color-text-secondary);
+  --input-focus-border: var(--color-accent-link);
+  
+  /* ----- LINKS ----- */
+  --link-color: var(--color-accent-link);
+  --link-hover: var(--accent-dusty-blue-hover);
+  --link-visited: var(--color-accent-lavender);
+
+  /* ----- BADGES / TAGS ----- */
+  --badge-success-bg: var(--color-accent-success);
+  --badge-success-text: var(--color-text-inverse);
+  --badge-award-bg: var(--color-accent-award);
+  --badge-award-text: var(--color-text-inverse);
+  
+  /* ----- HOVER EFFECTS ----- */
+  --hover-accent: var(--color-accent-hover);
+}
+
+/* ============================================
+   APPLY TO ELEMENTS
+   ============================================ */
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Backgrounds */
+.bg-primary { background: var(--color-bg-primary); }
+.bg-surface { background: var(--color-bg-surface); }
+.bg-elevated { background: var(--color-bg-elevated); }
+.bg-card { background: var(--color-bg-card); }
+
+/* Text */
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-inverse { color: var(--color-text-inverse); }
+
+/* Borders */
+.border-primary { border-color: var(--color-border-primary); }
+.border-secondary { border-color: var(--color-border-secondary); }
+
+/* Accent Utilities */
+.accent-sage { color: var(--accent-sage); }
+.accent-dusty-blue { color: var(--accent-dusty-blue); }
+.accent-lavender { color: var(--accent-lavender); }
+.accent-terracotta { color: var(--accent-terracotta); }
+.accent-amber { color: var(--accent-amber); }
+.accent-rose { color: var(--accent-rose); }
+
+/* Accent Backgrounds */
+.bg-accent-sage { background: var(--accent-sage); }
+.bg-accent-dusty-blue { background: var(--accent-dusty-blue); }
+.bg-accent-lavender { background: var(--accent-lavender); }
+.bg-accent-terracotta { background: var(--accent-terracotta); }
+.bg-accent-amber { background: var(--accent-amber); }
+.bg-accent-rose { background: var(--accent-rose); }
+
+/* Semantic Accents */
+.accent-success { color: var(--color-accent-success); }
+.accent-link { color: var(--color-accent-link); }
+.accent-button { color: var(--color-accent-button); }
+.accent-award { color: var(--color-accent-award); }
+
+.bg-accent-success { background: var(--color-accent-success); }
+.bg-accent-link { background: var(--color-accent-link); }
+.bg-accent-button { background: var(--color-accent-button); }
+.bg-accent-award { background: var(--color-accent-award); }
+
+/* Hover Effects */
+.hover-accent:hover {
+  background-color: var(--hover-accent);
+  transition: background-color 0.2s ease;
+}

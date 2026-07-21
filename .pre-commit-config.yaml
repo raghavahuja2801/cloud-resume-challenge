@@ -4,3 +4,7 @@ repos:
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
+        # Exclude the acm module which uses provider configuration_aliases
+        # (aws.us_east_1). Root-level terraform validate already covers all
+        # modules via the root providers configuration.
+        exclude: '^terraform/modules/acm/'

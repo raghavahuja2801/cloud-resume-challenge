@@ -101,12 +101,6 @@ const Experience = () => {
                   <div className="experience-header">
                     <div className="experience-title-group">
                       <div className="experience-company-row">
-                        {logoSvg && (
-                          <div 
-                            className="experience-logo"
-                            dangerouslySetInnerHTML={{ __html: logoSvg }}
-                          />
-                        )}
                         <h3 className="experience-role">{exp.role}</h3>
                       </div>
                       <p className="experience-company">{exp.company}</p>

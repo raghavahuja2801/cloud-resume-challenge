@@ -1,5 +1,6 @@
-src/components/PixelTrail.css
-/*
+/* src/components/PixelTrail.css
+
+/* 
  .pixel-trail-container {
   position: fixed;
   top: 0;
@@ -8,10 +9,10 @@ src/components/PixelTrail.css
   height: 100%;
   pointer-events: none;
   z-index: 2; /* Keep at 2 */
-  overflow: hidden;
-/*}
-/*
-.pixel {
+ /* overflow: hidden;
+}
+
+/*.pixel {
   position: absolute;
   background: #3B82F6;
   image-rendering: pixelated;
@@ -19,7 +20,7 @@ src/components/PixelTrail.css
   transition: none;
   border-radius: 0;
   box-shadow: none;
-} 
+/*}  
 */
 
 /* src/components/PixelTrail.css */

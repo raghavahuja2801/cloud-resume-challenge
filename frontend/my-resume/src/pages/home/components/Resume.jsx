@@ -1,6 +1,7 @@
 // src/pages/home/Resume.jsx
 import React from 'react';
 import './Resume.css';
+import resumePdf from '../assets/resume.pdf';
 import { FaDownload, FaLinkedin, FaGraduationCap } from 'react-icons/fa';
 
 const Resume = () => {
@@ -27,7 +28,7 @@ const Resume = () => {
                             </div>
                             <div className="resume-actions">
                                 <a 
-                                    href="/resume.pdf" 
+                                    href={resumePdf}
                                     className="resume-btn resume-btn-primary"
                                     download
                                 >

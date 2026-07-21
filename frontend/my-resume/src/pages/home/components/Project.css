@@ -42,27 +42,6 @@
   gap: var(--space-xl);
 }
 
-/* Featured project spans full width */
-.project-card:first-child {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-
-.project-card:first-child .project-image-wrapper {
-  height: 100%;
-  min-height: 300px;
-}
-
-.project-card:first-child .project-content {
-  padding: var(--space-2xl);
-}
-
-.project-card:first-child .project-title {
-  font-size: 1.5rem;
-}
-
 /* Project Card */
 .project-card {
   background: var(--color-bg-card);
@@ -141,32 +120,34 @@
 }
 
 .project-tag {
-  padding: 3px 10px;
-  background: var(--color-accent-secondary);
-  border: none;
-  border-radius: 4px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
+  padding: 4px 12px;
+  background: rgba(91, 123, 154, 0.1);
+  border: 1px solid rgba(91, 123, 154, 0.25);
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .project-tag:hover {
-  opacity: 0.8;
+  background: rgba(91, 123, 154, 0.18);
+  border-color: rgba(91, 123, 154, 0.4);
+  color: var(--color-text-primary);
 }
 
 .project-tag--more {
-  background: var(--color-bg-surface);
-  color: var(--color-text-tertiary);
+  background: transparent;
   border: 1px solid var(--color-border-primary);
-  padding: 2px 8px;
+  color: var(--color-text-tertiary);
+  padding: 4px 10px;
 }
 
 .project-tag--more:hover {
-  opacity: 1;
-  border-color: var(--color-accent-secondary);
+  background: rgba(91, 123, 154, 0.1);
+  border-color: rgba(91, 123, 154, 0.25);
 }
 
 /* Actions */
@@ -242,11 +223,6 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-lg);
   }
-  
-  .project-card:first-child {
-    grid-column: 1 / -1;
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media (max-width: 768px) {
@@ -269,16 +245,6 @@
   .projects-grid {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
-  }
-  
-  /* Featured project stacks vertically on mobile */
-  .project-card:first-child {
-    grid-column: 1 / -1;
-    grid-template-columns: 1fr;
-  }
-  
-  .project-card:first-child .project-image-wrapper {
-    min-height: 200px;
   }
   
   .project-image-wrapper {

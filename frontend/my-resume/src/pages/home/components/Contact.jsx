@@ -114,15 +114,15 @@ const Contact = () => {
               <div className="contact-social">
                 <h4 className="contact-social-title">Connect With Me</h4>
                 <div className="contact-social-icons">
-                  <a href="#" className="social-icon" aria-label="GitHub">
+                  <a href="https://github.com/raghavahuja2801" className="social-icon" aria-label="GitHub">
                     <FaGithub />
                   </a>
-                  <a href="#" className="social-icon" aria-label="LinkedIn">
+                  <a href="https://linkedin.com/in/ahuja-raghav" className="social-icon" aria-label="LinkedIn">
                     <FaLinkedin />
                   </a>
-                  <a href="#" className="social-icon" aria-label="Twitter">
-                    <FaTwitter />
-                  </a>
+                    <a href="https://twitter.com/raghavahuja2801" className="social-icon" aria-label="Twitter">
+                      <FaTwitter />
+                    </a>
                 </div>
               </div>
             </div>

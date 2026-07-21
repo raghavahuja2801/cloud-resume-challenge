@@ -5,6 +5,8 @@ import CloudResume from '../assets/cloud-resume.png';
 import Jotion from '../assets/jotion.png';
 import PodcastAI from '../assets/podcast-ai.png';
 import Disney from '../assets/disney.png';
+import HomeLab from '../assets/Homelab.png';
+import n8n from '../assets/n8n.png';
 import { FaGithub, FaExternalLinkAlt, FaTimes, FaCode } from 'react-icons/fa';
 
 const Projects = () => {
@@ -33,12 +35,22 @@ const Projects = () => {
       demo: "https://demo.com",
     },
     {
-      id: 2,
-      title: "Collaborative Note-Taking App",
-      highlight: "Real-time collaborative note-taking with rich text editing and version history.",
-      description: "A real-time collaborative note-taking application that allows multiple users to edit documents simultaneously. Features include rich text editing, version history, commenting, and organization with folders and tags. The application uses WebSockets for real-time updates and implements operational transformation algorithms to handle concurrent edits without conflicts.",
-      image: Jotion,
-      tags: ["React", "Socket.io", "MongoDB", "Express", "Draft.js"],
+      id: 5,
+      title: "K3s HomeLab",
+      highlight: "A AWS Cloud-based resume website with CI/CD pipeline, serverless architecture, and automated deployment.",
+      description: "The Cloud Resume Challenge is a project that demonstrates the ability to build and deploy a resume website using AWS cloud services. It includes a CI/CD pipeline for automated deployment, serverless architecture using AWS Lambda, and integration with AWS S3 for hosting. The project also features automated testing and monitoring to ensure reliability and performance.",
+      image: HomeLab,
+      tags: ["k3s", "Kubernetes", "Tailscale", "Docker", "DNS"],
+      github: "https://github.com",
+      demo: "https://demo.com",
+    },
+    {
+      id: 6,
+      title: "n8n Workflow Automation",
+      highlight: "A AWS Cloud-based resume website with CI/CD pipeline, serverless architecture, and automated deployment.",
+      description: "The Cloud Resume Challenge is a project that demonstrates the ability to build and deploy a resume website using AWS cloud services. It includes a CI/CD pipeline for automated deployment, serverless architecture using AWS Lambda, and integration with AWS S3 for hosting. The project also features automated testing and monitoring to ensure reliability and performance.",
+      image: n8n,
+      tags: ["n8n", "LLM", "Postgres", "Qdrant", "Chunking"],
       github: "https://github.com",
       demo: "https://demo.com",
     },
@@ -51,6 +63,16 @@ const Projects = () => {
       tags: ["React", "Firebase", "Tailwind", "WebSocket"],
       github: "https://github.com",
       demo: null,
+    },
+    {
+      id: 2,
+      title: "Collaborative Note-Taking App",
+      highlight: "Real-time collaborative note-taking with rich text editing and version history.",
+      description: "A real-time collaborative note-taking application that allows multiple users to edit documents simultaneously. Features include rich text editing, version history, commenting, and organization with folders and tags. The application uses WebSockets for real-time updates and implements operational transformation algorithms to handle concurrent edits without conflicts.",
+      image: Jotion,
+      tags: ["React", "Socket.io", "MongoDB", "Express", "Draft.js"],
+      github: "https://github.com",
+      demo: "https://demo.com",
     },
     {
       id: 4,

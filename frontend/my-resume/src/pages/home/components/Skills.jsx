@@ -30,7 +30,7 @@ const Skills = () => {
         },
         {
           name: 'Java',
-          icon: 'java',
+          icon: 'openjdk',
           description: 'Proficient in Java, specializing in backend development, multithreading, and Spring Boot for enterprise applications.',
           experience: 'Built scalable backend services using Java and Spring Boot for enterprise applications in Decision Point Analytics.'
         },
@@ -120,7 +120,7 @@ const Skills = () => {
       skills: [
         {
           name: 'AWS',
-          icon: 'amazonaws',
+          icon: 'amazonwebservices',
           description: 'Extensive experience with AWS services including EC2, S3, and Lambda.',
           experience: 'Deployed and managed production workloads on AWS infrastructure.'
         },

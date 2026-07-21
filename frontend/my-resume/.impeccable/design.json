@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "title": "Design System: The Architecture Lab",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "oklch(1.00 0.000 0)",
+        "tonalRamp": ["oklch(0.15 0.005 60)", "oklch(0.25 0.005 60)", "oklch(0.35 0.005 60)", "oklch(0.50 0.004 60)", "oklch(0.65 0.003 60)", "oklch(0.80 0.002 60)", "oklch(0.90 0.002 60)", "oklch(1.00 0.000 0)"]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Editorial Gold",
+        "canonical": "oklch(0.65 0.146 60)",
+        "tonalRamp": ["oklch(0.15 0.146 60)", "oklch(0.25 0.146 60)", "oklch(0.35 0.146 60)", "oklch(0.50 0.146 60)", "oklch(0.65 0.146 60)", "oklch(0.75 0.12 60)", "oklch(0.85 0.08 60)", "oklch(0.95 0.04 60)"]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Slate Blue",
+        "canonical": "oklch(0.45 0.07 250)",
+        "tonalRamp": ["oklch(0.15 0.07 250)", "oklch(0.25 0.07 250)", "oklch(0.35 0.07 250)", "oklch(0.45 0.07 250)", "oklch(0.55 0.07 250)", "oklch(0.65 0.06 250)", "oklch(0.80 0.04 250)", "oklch(0.93 0.02 250)"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "oklch(0.97 0.004 60)",
+        "tonalRamp": ["oklch(0.15 0.004 60)", "oklch(0.25 0.004 60)", "oklch(0.35 0.004 60)", "oklch(0.50 0.004 60)", "oklch(0.65 0.004 60)", "oklch(0.80 0.004 60)", "oklch(0.90 0.004 60)", "oklch(0.97 0.004 60)"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero name only. Used once per page."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose. Line length capped at 70ch."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hover-lift",
+        "value": "0 4px 16px rgba(0,0,0,0.06)",
+        "purpose": "Card and button hover state — diffuse lift, no ambient shadow at rest."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for state transitions (ease-out-expo approximation)."
+      },
+      {
+        "name": "ease-smooth",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Smooth deceleration for reveals and entrances."
+      },
+      {
+        "name": "duration-fast",
+        "value": "200ms",
+        "purpose": "Hover and focus transitions."
+      },
+      {
+        "name": "duration-slow",
+        "value": "400ms",
+        "purpose": "Page load reveals and section entrances."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Filled Editorial Gold call-to-action. Used once per section at most.",
+      "html": "<button class=\"ds-btn-primary\">View Projects</button>",
+      "css": ".ds-btn-primary { background: #C89B3C; color: #fff; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1rem; font-weight: 500; padding: 12px 28px; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover { background: #B88A2E; transform: translateY(-2px); } .ds-btn-primary:focus-visible { outline: 2px solid #C89B3C; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outlined ghost button for secondary actions.",
+      "html": "<button class=\"ds-btn-secondary\">Learn More</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: #1E1D1B; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1rem; font-weight: 500; padding: 12px 28px; border: 1px solid #706C66; border-radius: 6px; cursor: pointer; transition: background 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-btn-secondary:hover { background: #F7F6F4; transform: translateY(-2px); } .ds-btn-secondary:focus-visible { outline: 2px solid #C89B3C; outline-offset: 2px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Content container. Flat at rest, subtle hover lift.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Project Title</h3><p class=\"ds-card-body\">A short description of the project and what it demonstrates.</p></div>",
+      "css": ".ds-card { background: #FFFFFF; border: 1px solid #F7F6F4; border-radius: 10px; padding: 24px; transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-card:hover { transform: translateY(-4px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); } .ds-card-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1.15rem; font-weight: 600; color: #1E1D1B; margin: 0 0 8px; } .ds-card-body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.95rem; color: #706C66; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Chip / Tag",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Technology tag or skill badge.",
+      "html": "<span class=\"ds-chip\">TypeScript</span>",
+      "css": ".ds-chip { display: inline-flex; padding: 4px 14px; background: #F7F6F4; color: #706C66; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.8rem; font-weight: 500; border: 1px solid #E8E6E2; border-radius: 999px; transition: border-color 0.2s, color 0.2s; } .ds-chip:hover { border-color: #C89B3C; color: #1E1D1B; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Text input with gold focus ring.",
+      "html": "<div class=\"ds-input-group\"><label class=\"ds-label\" for=\"demo-input\">Email</label><input id=\"demo-input\" class=\"ds-input\" placeholder=\"your@email.com\" /></div>",
+      "css": ".ds-input-group { display: flex; flex-direction: column; gap: 6px; } .ds-label { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.85rem; font-weight: 500; color: #1E1D1B; } .ds-input { padding: 10px 16px; background: #F7F6F4; color: #1E1D1B; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.95rem; border: 1px solid #E8E6E2; border-radius: 6px; transition: border-color 0.2s, box-shadow 0.2s; outline: none; } .ds-input::placeholder { color: #706C66; opacity: 0.5; } .ds-input:focus { border-color: #C89B3C; box-shadow: 0 0 0 3px rgba(200,155,60,0.1); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Architecture Lab",
+    "overview": "A personal portfolio that presents its owner as both a precise engineer and a thoughtful designer. The metaphor is an architect's studio — clean sightlines, natural materials, considered layouts where every element has structural purpose. Nothing is decorative; everything is load-bearing.\n\nThe site is itself a proof of craft. The infrastructure animation (traveling data packets through a cloud architecture diagram) is the signature element — a live demonstration that the person behind this portfolio understands systems from the network edge to the pixel.",
+    "keyCharacteristics": [
+      "Editorial precision. Typography-first hierarchy. Serif display headings pair with a clean sans-serif body for warmth + clarity.",
+      "Engineered restraint. One signature animated element (the infra diagram) and one signature palette move (warm gold primary on pure white). Everything else steps back.",
+      "Flat-by-default, alive on interaction. Surfaces sit flat at rest. Hover states introduce subtle lift — the only depth in the system.",
+      "Gold ink on white paper. The brand color (a Klim-style editorial gold) is used sparingly — ≤10% of any screen. Its rarity is its power."
+    ],
+    "rules": [
+      {
+        "name": "The Rarity Rule",
+        "body": "Primary gold appears on ≤10% of any viewport. Its scarcity is what makes it read as intentional rather than decorative.",
+        "section": "colors"
+      },
+      {
+        "name": "The One-Family Rule",
+        "body": "Display and body use different families by design. Inter is never used for display headings; Instrument Serif is never used for body copy.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Shadows appear only as a response to state.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Use Editorial Gold sparingly — ≤10% of any viewport.",
+      "Use `text-wrap: balance` on display and headline text.",
+      "Keep body line length between 65–75 characters.",
+      "Use flat surfaces at rest; lift only on hover for interactive elements.",
+      "Use the infra animation as the signature visual — it proves the \"architect\" claim.",
+      "Let whitespace do the work of separation rather than borders and shadows."
+    ],
+    "donts": [
+      "Don't use the terminal-green-on-dark cliché, glassmorphism, gradient text, or purple-to-blue gradients.",
+      "Don't use warm cream/beige/sand backgrounds — the bg is pure white.",
+      "Don't put cards inside cards — flatten the hierarchy.",
+      "Don't use the hero-metric template (big number, small label, gradient).",
+      "Don't use identical card grids with icon + heading + text repeated endlessly.",
+      "Don't use tiny uppercase tracked eyebrow text (\"ABOUT\", \"PROCESS\") above every section.",
+      "Don't use numbered section markers (01 / 02 / 03) as default scaffolding.",
+      "Don't use border-left greater than 1px as a colored accent stripe.",
+      "Don't use bounce or elastic easing — use ease-out-expo or linear for motion.",
+      "Don't animate layout properties (width, height, padding) — use transform and opacity only.",
+      "Don't use placeholder images (`via.placeholder.com`) or fake project data."
+    ]
+  }
+}

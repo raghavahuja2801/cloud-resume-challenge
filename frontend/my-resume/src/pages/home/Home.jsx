@@ -1,11 +1,11 @@
 // src/pages/home/Home.jsx
 import React, { useState, useEffect } from 'react';
-import InfraAnimation from './InfraAnimation'
-import ExperienceSection from './Experience';
-import ProjectsSection from './Project';
-import SkillsSection from './Skills';
-import ResumeSection from './Resume';
-import ContactSection from './Contact';
+import InfraAnimation from './components/InfraAnimation'
+import ExperienceSection from './components/Experience';
+import ProjectsSection from './components/Project';
+import SkillsSection from './components/Skills';
+import Resume from './components/Resume';
+import ContactSection from './components/Contact';
 import './Home.css';
 
 const Home = ({ isDark, toggleTheme }) => {
@@ -95,7 +95,7 @@ const Home = ({ isDark, toggleTheme }) => {
 
         {/* Resume Section */}
         <section id="resume" className="section">
-          <ResumeSection />
+          <Resume />
         </section>
 
         {/* Contact Section */}

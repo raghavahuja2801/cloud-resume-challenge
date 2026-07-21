@@ -105,16 +105,16 @@
 .text-secondary { background: var(--color-text-secondary); }
 
 .accent-sage { background: var(--accent-sage); }
-.accent-dusty-blue { background: var(--accent-dusty-blue); }
+.accent-dusty-blue { background: var(--color-accent-primary); }
 .accent-lavender { background: var(--accent-lavender); }
 .accent-terracotta { background: var(--accent-terracotta); }
 .accent-amber { background: var(--accent-amber); }
 .accent-rose { background: var(--accent-rose); }
 
 .accent-success { background: var(--color-accent-success); }
-.accent-link { background: var(--color-accent-link); }
-.accent-button { background: var(--color-accent-button); }
-.accent-award { background: var(--color-accent-award); }
+.accent-link { background: var(--color-accent-primary); }
+.accent-button { background: var(--color-accent-primary); }
+.accent-award { background: var(--color-accent-primary); }
 
 /* ===== TYPOGRAPHY ===== */
 .typography-demo {
@@ -227,12 +227,12 @@
 }
 
 .btn-award {
-  background: var(--color-accent-award);
+  background: var(--color-accent-primary);
   color: var(--color-text-inverse);
 }
 
 .btn-award:hover {
-  background: var(--accent-amber-hover);
+  background: var(--brand-success-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(212, 185, 110, 0.3);
 }
@@ -264,7 +264,7 @@
 }
 
 .card-accent {
-  border-left: 4px solid var(--color-accent-button);
+  border-left: 4px solid var(--color-accent-primary);
 }
 
 .card-title {
@@ -304,17 +304,17 @@
 }
 
 .badge-award {
-  background: var(--color-accent-award);
+  background: var(--color-accent-primary);
   color: var(--color-text-inverse);
 }
 
 .badge-link {
-  background: var(--color-accent-link);
+  background: var(--color-accent-primary);
   color: var(--color-text-inverse);
 }
 
 .badge-primary {
-  background: var(--color-accent-button);
+  background: var(--color-accent-primary);
   color: var(--color-text-inverse);
 }
 

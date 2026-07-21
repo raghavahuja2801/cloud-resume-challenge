@@ -1,53 +1,58 @@
 /* src/styles/theme.css */
 
 /* ============================================
-   LEVEL 1: RAW VALUES (Base Colors)
+   FONT IMPORTS
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ============================================
+   LEVEL 1: RAW VALUES
    ============================================ */
 
 :root {
   /* ----- LIGHT MODE RAW VALUES ----- */
-  --light-bg-background: #FAFAFA;
-  --light-bg-surface: #FFFCF8;
+  --light-bg-background: #FFFFFF;
+  --light-bg-surface: #F7F6F2;
   --light-bg-elevated: #FFFFFF;
   
-  --light-text-primary: #161616;
-  --light-text-secondary: #5F5F5F;
-  --light-border: #DDD9D2;
+  --light-text-primary: #1E1D1A;
+  --light-text-secondary: #706C66;
+  --light-text-tertiary: #9C9890;
+  --light-border: #E8E6E2;
+  --light-border-subtle: #F0EFEC;
 
   /* ----- DARK MODE RAW VALUES ----- */
-  --dark-bg-background: #0E0E0D;
-  --dark-bg-surface: #171716;
-  --dark-bg-elevated: #1D1D1C;
+  --dark-bg-background: #1A1A1A;
+  --dark-bg-surface: #242322;
+  --dark-bg-elevated: #2E2D2B;
   
-  --dark-text-primary: #F3F2EF;
-  --dark-text-secondary: #B5B3AE;
-  --dark-border: #30302F;
+  --dark-text-primary: #EEEDEB;
+  --dark-text-secondary: #8A8680;
+  --dark-text-tertiary: #6B6762;
+  --dark-border: #363533;
+  --dark-border-subtle: #2C2B29;
 
-  /* ----- ACCENT PALETTE (Shared) ----- */
-  --accent-sage: #8EA58C;
-  --accent-sage-hover: #7A8F78;
+  /* ----- BRAND PALETTE ----- */
+  --brand-gold: #C89B3C;
+  --brand-gold-hover: #B88A2E;
+  --brand-gold-light: #E8D5A0;
   
-  --accent-dusty-blue: #8FA8C9;
-  --accent-dusty-blue-hover: #7B94B5;
+  --brand-slate: #5B7B9A;
+  --brand-slate-hover: #4A6A89;
+  --brand-slate-light: #A0B8CC;
   
-  --accent-lavender: #A69BC8;
-  --accent-lavender-hover: #9287B4;
+  --brand-success: #7A9A7A;
+  --brand-success-hover: #6A8A6A;
   
-  --accent-terracotta: #C79273;
-  --accent-terracotta-hover: #B37E5F;
-  
-  --accent-amber: #D4B96E;
-  --accent-amber-hover: #C0A55A;
-  
-  --accent-rose: #C99BA8;
-  --accent-rose-hover: #B58794;
+  --brand-error: #B05E5E;
+  --brand-error-hover: #9E4E4E;
 }
 
 /* ============================================
-   LEVEL 2: SEMANTIC TOKENS
+   LEVEL 2: SEMANTIC TOKENS — LIGHT MODE
    ============================================ */
 
-/* ----- LIGHT MODE (Default) ----- */
 :root {
   /* Backgrounds */
   --color-bg-primary: var(--light-bg-background);
@@ -58,19 +63,25 @@
   /* Text */
   --color-text-primary: var(--light-text-primary);
   --color-text-secondary: var(--light-text-secondary);
+  --color-text-tertiary: var(--light-text-tertiary);
   --color-text-inverse: #FFFFFF;
   
   /* Borders */
   --color-border-primary: var(--light-border);
-  --color-border-secondary: var(--light-border);
+  --color-border-subtle: var(--light-border-subtle);
   
-  /* Accents (mapped to semantic use cases) */
-  --color-accent-success: var(--accent-sage);
-  --color-accent-link: var(--accent-dusty-blue);
-  --color-accent-button: var(--accent-lavender);
-  --color-accent-hover: var(--accent-terracotta);
-  --color-accent-award: var(--accent-amber);
-  --color-accent-rare: var(--accent-rose);
+  /* Brand accents */
+  --color-accent-primary: var(--brand-gold);
+  --color-accent-primary-hover: var(--brand-gold-hover);
+  --color-accent-primary-light: var(--brand-gold-light);
+  
+  --color-accent-secondary: var(--brand-slate);
+  --color-accent-secondary-hover: var(--brand-slate-hover);
+  --color-accent-secondary-light: var(--brand-slate-light);
+  
+  --color-accent-success: var(--brand-success);
+  --color-accent-error: var(--brand-error);
+  --color-accent-error-hover: var(--brand-error-hover);
 }
 
 /* ----- DARK MODE ----- */
@@ -84,19 +95,25 @@
   /* Text */
   --color-text-primary: var(--dark-text-primary);
   --color-text-secondary: var(--dark-text-secondary);
-  --color-text-inverse: #0E0E0D;
+  --color-text-tertiary: var(--dark-text-tertiary);
+  --color-text-inverse: #1A1A1A;
   
   /* Borders */
   --color-border-primary: var(--dark-border);
-  --color-border-secondary: var(--dark-border);
+  --color-border-subtle: var(--dark-border-subtle);
   
-  /* Accents (same semantic mapping) */
-  --color-accent-success: var(--accent-sage);
-  --color-accent-link: var(--accent-dusty-blue);
-  --color-accent-button: var(--accent-lavender);
-  --color-accent-hover: var(--accent-terracotta);
-  --color-accent-award: var(--accent-amber);
-  --color-accent-rare: var(--accent-rose);
+  /* Brand accents */
+  --color-accent-primary: #D4A94E;
+  --color-accent-primary-hover: #E0B860;
+  --color-accent-primary-light: #A8873A;
+  
+  --color-accent-secondary: #7A9ABA;
+  --color-accent-secondary-hover: #8BAACA;
+  --color-accent-secondary-light: #5B7B9A;
+  
+  --color-accent-success: #7A9A7A;
+  --color-accent-error: #B05E5E;
+  --color-accent-error-hover: #C06E6E;
 }
 
 /* ============================================
@@ -104,10 +121,35 @@
    ============================================ */
 
 :root {
+  /* ----- FONTS ----- */
+  --font-display: 'Spectral', Georgia, 'Times New Roman', serif;
+  --font-heading: 'Spectral', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  --font-code: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+
+  /* ----- SPACING SCALE (4pt base) ----- */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+  --space-4xl: 64px;
+  --space-5xl: 80px;
+  --space-6xl: 96px;
+
+  /* ----- SECTION SPACING ----- */
+  --section-padding-y: var(--space-5xl);
+  --section-padding-x: var(--space-xl);
+  --section-gap: var(--space-3xl);
+  --subsection-gap: var(--space-xl);
+
   /* ----- BUTTONS ----- */
-  --button-primary-bg: var(--color-accent-button);
-  --button-primary-text: var(--color-text-inverse);
-  --button-primary-hover: var(--accent-lavender-hover);
+  --button-primary-bg: var(--color-accent-primary);
+  --button-primary-text: #FFFFFF;
+  --button-primary-hover: var(--color-accent-primary-hover);
   
   --button-secondary-bg: transparent;
   --button-secondary-text: var(--color-text-primary);
@@ -115,37 +157,34 @@
   --button-secondary-hover: var(--color-bg-surface);
   
   --button-success-bg: var(--color-accent-success);
-  --button-success-hover: var(--accent-sage-hover);
-  
-  --button-link-color: var(--color-accent-link);
-  --button-link-hover: var(--accent-dusty-blue-hover);
+  --button-success-hover: var(--brand-success-hover);
 
   /* ----- CARDS ----- */
-  --card-bg: var(--color-bg-surface);
+  --card-bg: var(--color-bg-card);
   --card-border: var(--color-border-primary);
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-  --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.06);
   
   /* ----- INPUTS ----- */
   --input-bg: var(--color-bg-surface);
   --input-border: var(--color-border-primary);
   --input-text: var(--color-text-primary);
-  --input-placeholder: var(--color-text-secondary);
-  --input-focus-border: var(--color-accent-link);
+  --input-placeholder: var(--color-text-tertiary);
+  --input-focus-border: var(--color-accent-primary);
   
   /* ----- LINKS ----- */
-  --link-color: var(--color-accent-link);
-  --link-hover: var(--accent-dusty-blue-hover);
-  --link-visited: var(--color-accent-lavender);
+  --link-color: var(--color-accent-primary);
+  --link-hover: var(--color-accent-primary-hover);
 
   /* ----- BADGES / TAGS ----- */
   --badge-success-bg: var(--color-accent-success);
-  --badge-success-text: var(--color-text-inverse);
-  --badge-award-bg: var(--color-accent-award);
-  --badge-award-text: var(--color-text-inverse);
+  --badge-success-text: #FFFFFF;
+
+  /* ----- FOCUS ----- */
+  --focus-ring: 0 0 0 3px rgba(200, 155, 60, 0.15);
   
   /* ----- HOVER EFFECTS ----- */
-  --hover-accent: var(--color-accent-hover);
+  --hover-lift: translateY(-4px);
 }
 
 /* ============================================
@@ -172,41 +211,26 @@ body {
 /* Text */
 .text-primary { color: var(--color-text-primary); }
 .text-secondary { color: var(--color-text-secondary); }
+.text-tertiary { color: var(--color-text-tertiary); }
 .text-inverse { color: var(--color-text-inverse); }
 
 /* Borders */
 .border-primary { border-color: var(--color-border-primary); }
-.border-secondary { border-color: var(--color-border-secondary); }
+.border-subtle { border-color: var(--color-border-subtle); }
 
-/* Accent Utilities */
-.accent-sage { color: var(--accent-sage); }
-.accent-dusty-blue { color: var(--accent-dusty-blue); }
-.accent-lavender { color: var(--accent-lavender); }
-.accent-terracotta { color: var(--accent-terracotta); }
-.accent-amber { color: var(--accent-amber); }
-.accent-rose { color: var(--accent-rose); }
-
-/* Accent Backgrounds */
-.bg-accent-sage { background: var(--accent-sage); }
-.bg-accent-dusty-blue { background: var(--accent-dusty-blue); }
-.bg-accent-lavender { background: var(--accent-lavender); }
-.bg-accent-terracotta { background: var(--accent-terracotta); }
-.bg-accent-amber { background: var(--accent-amber); }
-.bg-accent-rose { background: var(--accent-rose); }
-
-/* Semantic Accents */
+/* Brand Accent Utilities */
+.accent-primary { color: var(--color-accent-primary); }
+.accent-secondary { color: var(--color-accent-secondary); }
 .accent-success { color: var(--color-accent-success); }
-.accent-link { color: var(--color-accent-link); }
-.accent-button { color: var(--color-accent-button); }
-.accent-award { color: var(--color-accent-award); }
+.accent-error { color: var(--color-accent-error); }
 
+/* Brand Accent Backgrounds */
+.bg-accent-primary { background: var(--color-accent-primary); }
+.bg-accent-secondary { background: var(--color-accent-secondary); }
 .bg-accent-success { background: var(--color-accent-success); }
-.bg-accent-link { background: var(--color-accent-link); }
-.bg-accent-button { background: var(--color-accent-button); }
-.bg-accent-award { background: var(--color-accent-award); }
+.bg-accent-error { background: var(--color-accent-error); }
 
 /* Hover Effects */
-.hover-accent:hover {
-  background-color: var(--hover-accent);
-  transition: background-color 0.2s ease;
+.hover-lift:hover {
+  transform: var(--hover-lift);
 }

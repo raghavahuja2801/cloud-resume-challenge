@@ -166,16 +166,19 @@
 }
 
 .hero-name {
-  font-size: 5rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 600;
   color: var(--color-text-primary);
   margin: 0;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
 .hero-title {
-  font-size: 2rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 3vw, 2rem);
   font-weight: 400;
   color: var(--color-text-secondary);
   margin: 0;
@@ -183,15 +186,18 @@
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
   font-weight: 500;
-  color: var(--color-accent-rare);
+  color: var(--color-accent-secondary);
   margin: 0;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .hero-description {
-  font-size: 1.25rem;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
   color: var(--color-text-secondary);
   margin: 0;
   max-width: 600px;
@@ -211,7 +217,7 @@
 .hero-actions .btn-primary {
   display: inline-block;
   padding: 12px 32px;
-  background: var(--accent-dusty-blue);
+  background: var(--color-accent-primary);
   color: var(--color-text-inverse);
   font-family: var(--font-body);
   font-weight: 500;
@@ -224,9 +230,9 @@
 }
 
 .btn-primary:hover {
-  background: var(--accent-dusty-blue-hover);
+  background: var(--color-accent-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(143, 168, 201, 0.3);
+  box-shadow: 0 4px 12px rgba(200, 155, 60, 0.3);
 }
 
 .btn-primary:active {
@@ -261,7 +267,7 @@
   border: 1px solid var(--color-border-primary);
   border-radius: 10px;
   overflow: hidden;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-family: var(--font-mono);
   max-width: 600px;
 }
 
@@ -323,7 +329,7 @@
   color: var(--color-text-secondary);
   font-size: 0.9rem;
   padding-left: 0.5rem;
-  border-left: 2px solid var(--color-accent-link);
+  border-left: 2px solid var(--color-accent-primary);
   animation: typeIn 0.5s ease-out;
 }
 
@@ -498,14 +504,21 @@
 /* Add to Home.css - Section styles */
 
 .section {
-  padding: 4rem 0;
-  min-height: 100vh;
+  padding: var(--space-5xl) var(--space-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 1;
+}
+
+.section:first-of-type {
+  padding-top: var(--space-4xl);
+}
+
+.section:last-of-type {
+  padding-bottom: var(--space-6xl);
 }
 
 .section-content {
@@ -516,14 +529,16 @@
 }
 
 .section-title {
+  font-family: var(--font-heading);
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-text-primary);
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
   position: relative;
   z-index: 3; /* Above pixels (z-index: 2) */
   text-align: left; /* Or center if you want */
+  text-wrap: balance;
 }
 
 .section-text {
@@ -538,20 +553,18 @@
 /* Mobile - Full width */
 @media (max-width: 768px) {
   .section {
-    padding: 3rem 12px; /* Reduced horizontal padding */
+    padding: var(--space-4xl) var(--space-lg);
   }
 
   .section-content {
     max-width: 100%;
-    padding: 0 4px;
+    padding: 0;
   }
-
-  /* ... rest of mobile styles ... */
 }
 
 @media (max-width: 480px) {
   .section {
-    padding: 2rem 8px;
+    padding: var(--space-3xl) var(--space-md);
   }
 
   .section-content {

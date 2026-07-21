@@ -2,7 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import InfraAnimation from './InfraAnimation'
 import ExperienceSection from './Experience';
+import ProjectsSection from './Project';
 import SkillsSection from './Skills';
+import ResumeSection from './Resume';
+import ContactSection from './Contact';
 import './Home.css';
 
 const Home = ({ isDark, toggleTheme }) => {
@@ -82,12 +85,7 @@ const Home = ({ isDark, toggleTheme }) => {
 
         {/* Projects Section */}
         <section id="projects" className="section">
-          <div className="section-content">
-            <h2 className="section-title">Projects</h2>
-            <p className="section-text">
-              Add your projects content here...
-            </p>
-          </div>
+          <ProjectsSection />
         </section>
 
         {/* Skills Section */}
@@ -97,22 +95,12 @@ const Home = ({ isDark, toggleTheme }) => {
 
         {/* Resume Section */}
         <section id="resume" className="section">
-          <div className="section-content">
-            <h2 className="section-title">Resume</h2>
-            <p className="section-text">
-              Add your resume content here...
-            </p>
-          </div>
+          <ResumeSection />
         </section>
 
         {/* Contact Section */}
         <section id="contact" className="section">
-          <div className="section-content">
-            <h2 className="section-title">Contact</h2>
-            <p className="section-text">
-              Add your contact content here...
-            </p>
-          </div>
+          <ContactSection />
         </section>
       </div>
     </>

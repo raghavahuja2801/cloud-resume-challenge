@@ -1,0 +1,434 @@
+/* src/pages/home/Resume.css */
+
+.resume-section {
+  padding: 80px 20px;
+  background: transparent;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.resume-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.resume-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.resume-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 3rem;
+}
+
+/* Two Column Grid */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Left Column - Resume Card */
+.resume-left {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.resume-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-primary);
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.resume-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--color-accent-link);
+}
+
+.resume-card-content {
+
+  margin-bottom: 20px;
+}
+
+.resume-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 4px 0;
+}
+
+.resume-role {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 4px 0;
+}
+
+.resume-updated {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.resume-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-border-primary);
+  background: transparent;
+  color: var(--color-text-primary);
+  width: 100%;
+}
+
+.btn-icon {
+  font-size: 1rem;
+}
+
+.resume-btn-primary {
+  background: var(--color-accent-button);
+  border-color: var(--color-accent-button);
+  color: var(--color-text-inverse);
+}
+
+.resume-btn-primary:hover {
+  background: var(--accent-lavender-hover);
+  border-color: var(--accent-lavender-hover);
+  transform: translateY(-2px);
+}
+
+.resume-btn-secondary {
+  border-color: var(--color-border-primary);
+  color: var(--color-text-primary);
+}
+
+.resume-btn-secondary:hover {
+  border-color: var(--color-accent-link);
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface);
+  transform: translateY(-2px);
+}
+
+/* Right Column - Education & Skills */
+.resume-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Education Section */
+.resume-education {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+}
+
+.resume-education:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--color-accent-link);
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-border-primary);
+}
+
+.education-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.education-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.education-icon {
+  flex-shrink: 0;
+  color: var(--color-accent-link);
+  font-size: 1.2rem;
+  margin-top: 2px;
+}
+
+.education-degree {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 4px 0;
+}
+
+.education-degree .h3{
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin: 0 0 4px 0;
+}
+
+.education-school {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.education-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-left: 36px;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.education-gpa {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* Key Skills Section */
+.resume-skills {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+}
+
+.resume-skills:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--color-accent-link);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.skill-category {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-category-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  padding: 4px 12px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+  border-color: var(--color-accent-link);
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   RESPONSIVE - TABLET & MOBILE
+   ============================================ */
+
+@media (max-width: 968px) {
+  .resume-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .resume-section {
+    padding: 60px 16px;
+    width: 100%;
+  }
+  
+  .resume-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .resume-title {
+    font-size: 2rem;
+  }
+  
+  .resume-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .resume-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .resume-card {
+    padding: 20px;
+  }
+  
+  .resume-name {
+    font-size: 1.1rem;
+  }
+  
+  .resume-education {
+    padding: 20px;
+  }
+  
+  .education-degree {
+    font-size: 1rem;
+  }
+  
+  .education-details {
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 36px;
+  }
+  
+  .resume-skills {
+    padding: 20px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-section {
+    padding: 40px 12px;
+    width: 100%;
+  }
+  
+  .resume-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .resume-title {
+    font-size: 1.75rem;
+  }
+  
+  .resume-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .resume-card {
+    padding: 16px;
+  }
+  
+  .resume-name {
+    font-size: 1rem;
+  }
+  
+  .resume-role {
+    font-size: 0.85rem;
+  }
+  
+  .resume-btn {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+  
+  .resume-education {
+    padding: 16px;
+  }
+  
+  .education-degree {
+    font-size: 0.95rem;
+  }
+  
+  .education-school {
+    font-size: 0.85rem;
+  }
+  
+  .education-details {
+    font-size: 0.85rem;
+    padding-left: 0;
+    margin-top: 8px;
+  }
+  
+  .education-icon {
+    font-size: 1rem;
+  }
+  
+  .resume-skills {
+    padding: 16px;
+  }
+  
+  .skill-category-title {
+    font-size: 0.8rem;
+  }
+  
+  .skill-tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+  }
+}

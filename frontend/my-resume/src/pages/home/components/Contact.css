@@ -1,7 +1,6 @@
 /* src/pages/home/Contact.css */
 
 .contact-section {
-  padding: var(--section-padding-y) var(--section-padding-x);
   background: transparent;
   width: 100%;
   position: relative;
@@ -58,7 +57,7 @@
 .contact-form-wrapper .contact-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--card-shadow-hover);
-  border-color: var(--color-accent-primary);
+  border-color: var(--color-accent-secondary);
 }
 
 /* Left Column - Form */
@@ -117,8 +116,8 @@
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: var(--color-accent-primary);
-  box-shadow: var(--focus-ring);
+  border-color: var(--color-accent-secondary);
+  box-shadow: 0 0 0 3px rgba(91, 123, 154, 0.12);
 }
 
 .form-textarea {
@@ -129,19 +128,18 @@
 .submit-btn {
   padding: 12px 32px;
   background: var(--color-accent-primary);
-  border: 2px solid var(--color-accent-primary);
-  border-radius: 8px;
+  border: 1.5px solid var(--color-accent-primary);
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--color-text-inverse);
+  color: #fff;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
   margin-top: 4px;
 }
 
 .submit-btn:hover {
   background: var(--color-accent-primary-hover);
-  border-color: var(--color-accent-primary-hover);
   transform: translateY(-2px);
 }
 
@@ -176,7 +174,7 @@
 
 .contact-info-icon {
   flex-shrink: 0;
-  color: var(--color-accent-primary);
+  color: var(--color-accent-secondary);
   font-size: 1.1rem;
   margin-top: 2px;
 }
@@ -231,7 +229,7 @@
 
 .social-icon:hover {
   color: var(--color-text-primary);
-  border-color: var(--color-accent-primary);
+  border-color: var(--color-accent-secondary);
   transform: translateY(-2px);
 }
 
@@ -247,11 +245,6 @@
 }
 
 @media (max-width: 768px) {
-  .contact-section {
-    padding: 60px 16px;
-    width: 100%;
-  }
-  
   .contact-container {
     max-width: 100%;
     padding: 0;
@@ -303,11 +296,6 @@
 }
 
 @media (max-width: 480px) {
-  .contact-section {
-    padding: var(--space-3xl) var(--space-lg);
-    width: 100%;
-  }
-  
   .contact-container {
     max-width: 100%;
     padding: 0;

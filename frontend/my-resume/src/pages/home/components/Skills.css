@@ -1,10 +1,9 @@
 /* src/pages/home/Skills.css */
 
 .skills-section {
-  padding: var(--section-padding-y) var(--section-padding-x);
   width: 100%;
   background: transparent;
-position: relative;
+  position: relative;
   z-index: 1;
 }
 
@@ -58,20 +57,20 @@ position: relative;
 }
 
 .skill-pill:hover {
-  border-color: var(--color-accent-primary);
+  border-color: var(--color-accent-secondary);
   color: var(--color-text-primary);
   background: var(--color-bg-surface);
 }
 
 .skill-pill.active {
-  background: var(--color-accent-primary);
-  border-color: var(--color-accent-primary);
-  color: var(--color-text-inverse);
+  background: var(--color-accent-secondary);
+  border-color: var(--color-accent-secondary);
+  color: #fff;
 }
 
 .skill-pill.active:hover {
-  background: var(--color-accent-primary-hover);
-  border-color: var(--color-accent-primary-hover);
+  background: var(--color-accent-secondary-hover);
+  border-color: var(--color-accent-secondary-hover);
 }
 
 /* Cards Grid */
@@ -99,7 +98,7 @@ position: relative;
 }
 
 .skill-card:hover {
-  border-color: var(--color-accent-primary);
+  border-color: var(--color-accent-secondary);
 }
 
 /* Skill Header with Icon */
@@ -164,10 +163,6 @@ position: relative;
 }
 
 @media (max-width: 480px) {
-  .skills-section {
-    padding: var(--space-3xl) var(--space-lg);
-  }
-  
   .skill-card {
     padding: var(--space-lg);
   }

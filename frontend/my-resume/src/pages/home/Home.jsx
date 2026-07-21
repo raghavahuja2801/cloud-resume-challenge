@@ -1,6 +1,6 @@
 // src/pages/home/Home.jsx
 import React, { useState, useEffect } from 'react';
-import InfraAnimation from './components/InfraAnimation'
+import TerminalHero from '../../components/TerminalHero'
 import ExperienceSection from './components/Experience';
 import ProjectsSection from './components/Project';
 import SkillsSection from './components/Skills';
@@ -55,25 +55,10 @@ const Home = ({ isDark, toggleTheme }) => {
                   Resume
                 </a>
               </div>
-
-              <div className="terminal">
-                <div className="terminal-header">
-                  <span className="terminal-dot"></span>
-                  <span className="terminal-dot"></span>
-                  <span className="terminal-dot"></span>
-                  <span className="terminal-title">bash</span>
-                </div>
-                <div className="terminal-body">
-                  <div className="terminal-line">
-                    <span className="terminal-command">$ terraform apply</span>
-                    <span className="terminal-output">Apply complete. Resources: 28 added.</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <div className="hero-infra">
-              <InfraAnimation />
+              <TerminalHero />
             </div>
           </div>
         </section>

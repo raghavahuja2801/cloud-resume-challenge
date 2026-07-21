@@ -1,7 +1,6 @@
 /* src/pages/home/Resume.css */
 
 .resume-section {
-  padding: var(--section-padding-y) var(--section-padding-x);
   background: transparent;
   width: 100%;
   position: relative;
@@ -69,7 +68,7 @@
 .resume-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--card-shadow-hover);
-  border-color: var(--color-accent-primary);
+  border-color: var(--color-accent-secondary);
 }
 
 .resume-card-content {
@@ -127,12 +126,11 @@
 .resume-btn-primary {
   background: var(--color-accent-primary);
   border-color: var(--color-accent-primary);
-  color: var(--color-text-inverse);
+  color: #fff;
 }
 
 .resume-btn-primary:hover {
   background: var(--color-accent-primary-hover);
-  border-color: var(--color-accent-primary-hover);
   transform: translateY(-2px);
 }
 
@@ -142,7 +140,7 @@
 }
 
 .resume-btn-secondary:hover {
-  border-color: var(--color-accent-primary);
+  border-color: var(--color-accent-secondary);
   color: var(--color-text-primary);
   background: var(--color-bg-surface);
   transform: translateY(-2px);
@@ -165,7 +163,7 @@
 }
 
 .resume-education:hover {
-  border-color: var(--color-accent-primary);
+  border-color: var(--color-accent-secondary);
 }
 
 .resume-sub-section-title {
@@ -192,7 +190,7 @@
 
 .education-icon {
   flex-shrink: 0;
-  color: var(--color-accent-primary);
+  color: var(--color-accent-secondary);
   font-size: 1.1rem;
   margin-top: 3px;
 }
@@ -241,7 +239,7 @@
 }
 
 .resume-skills:hover {
-  border-color: var(--color-accent-primary);
+  border-color: var(--color-accent-secondary);
 }
 
 .skills-grid {
@@ -272,17 +270,21 @@
 }
 
 .skill-tag {
-  padding: 3px 10px;
-  background: var(--color-bg-surface);
-  border: 1px solid var(--color-border-primary);
-  border-radius: 999px;
+  padding: 4px 12px;
+  background: rgba(91, 123, 154, 0.1);
+  border: 1px solid rgba(91, 123, 154, 0.25);
+  border-radius: 6px;
   font-size: 0.75rem;
+  font-weight: 500;
   color: var(--color-text-secondary);
-  transition: border-color 0.2s ease, color 0.2s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .skill-tag:hover {
-  border-color: var(--color-accent-primary);
+  background: rgba(91, 123, 154, 0.18);
+  border-color: rgba(91, 123, 154, 0.4);
   color: var(--color-text-primary);
 }
 
@@ -298,11 +300,6 @@
 }
 
 @media (max-width: 768px) {
-  .resume-section {
-    padding: var(--space-4xl) var(--section-padding-x);
-    width: 100%;
-  }
-  
   .resume-container {
     max-width: 100%;
     padding: 0;
@@ -357,11 +354,6 @@
 }
 
 @media (max-width: 480px) {
-  .resume-section {
-    padding: var(--space-3xl) var(--space-lg);
-    width: 100%;
-  }
-  
   .resume-container {
     max-width: 100%;
     padding: 0;

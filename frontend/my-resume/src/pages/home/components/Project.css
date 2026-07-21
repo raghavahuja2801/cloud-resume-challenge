@@ -1,7 +1,6 @@
 /* src/pages/home/Projects.css */
 
 .projects-section {
-  padding: var(--section-padding-y) var(--section-padding-x);
   background: transparent;
   width: 100%;
   position: relative;
@@ -79,13 +78,13 @@
 .project-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--card-shadow-hover);
-  border-color: var(--color-accent-primary);
+  border-color: var(--color-accent-secondary);
 }
 
 /* Image */
 .project-image-wrapper {
   width: 100%;
-  height: 200px;
+  height: 150px;
   overflow: hidden;
   background: var(--color-bg-surface);
   position: relative;
@@ -118,12 +117,19 @@
   margin: 0;
 }
 
+.project-highlight {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
 .project-description {
   font-size: 0.95rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
   margin: 0;
-  flex: 1;
 }
 
 /* Tags */
@@ -135,19 +141,32 @@
 }
 
 .project-tag {
-  padding: 4px 12px;
-  background: var(--color-bg-surface);
-  border: 1px solid var(--color-border-primary);
-  border-radius: 20px;
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-  transition: all 0.2s ease;
+  padding: 3px 10px;
+  background: var(--color-accent-secondary);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.03em;
   white-space: nowrap;
+  transition: opacity 0.2s ease;
 }
 
 .project-tag:hover {
-  border-color: var(--color-accent-primary);
-  color: var(--color-text-primary);
+  opacity: 0.8;
+}
+
+.project-tag--more {
+  background: var(--color-bg-surface);
+  color: var(--color-text-tertiary);
+  border: 1px solid var(--color-border-primary);
+  padding: 2px 8px;
+}
+
+.project-tag--more:hover {
+  opacity: 1;
+  border-color: var(--color-accent-secondary);
 }
 
 /* Actions */
@@ -174,10 +193,7 @@
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid var(--color-border-primary);
-  background: transparent;
-  color: var(--color-text-primary);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   text-decoration: none;
 }
 
@@ -186,37 +202,35 @@
 }
 
 .project-btn-details {
-  background: var(--color-accent-primary);
-  border-color: var(--color-accent-primary);
-  color: var(--color-text-inverse);
+  background: rgba(91, 123, 154, 0.08);
+  border: 1.5px solid rgba(91, 123, 154, 0.2);
+  color: var(--color-text-primary);
 }
 
 .project-btn-details:hover {
-  background: var(--color-accent-primary-hover);
-  border-color: var(--color-accent-primary-hover);
+  background: rgba(91, 123, 154, 0.15);
+  border-color: var(--color-accent-secondary);
 }
 
 .project-btn-icon {
-  width: 38px;
-  height: 38px;
+  background: transparent;
+  border: none;
+  width: 36px;
+  height: 36px;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  color: var(--color-text-secondary);
-  border-color: var(--color-border-primary);
+  font-size: 1.15rem;
+  color: var(--color-text-tertiary);
 }
 
 .project-btn-icon:hover {
-  border-color: var(--color-accent-primary);
-  color: var(--color-text-primary);
-  background: var(--color-bg-surface);
+  color: var(--color-accent-secondary);
 }
 
 .btn-icon {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 /* ============================================
@@ -236,11 +250,6 @@
 }
 
 @media (max-width: 768px) {
-  .projects-section {
-    padding: var(--section-padding-y) var(--section-padding-x);
-    width: 100%;
-  }
-  
   .projects-container {
     max-width: 100%;
     padding: 0;
@@ -378,4 +387,106 @@
   .project-btn-details {
     width: 100%;
   }
+}
+
+/* ============================================
+   PROJECT DETAILS DIALOG
+   ============================================ */
+
+.project-dialog {
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90vw;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.project-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.project-dialog-content {
+  position: relative;
+}
+
+.project-dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  z-index: 2;
+  transition: background 0.2s ease;
+}
+
+.project-dialog-close:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.project-dialog-image-wrapper {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: var(--color-bg-surface);
+}
+
+.project-dialog-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-dialog-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-dialog-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.project-dialog-description {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.project-dialog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-dialog-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border-primary);
+}
+
+.project-dialog-actions .project-btn {
+  flex: 1;
+  justify-content: center;
 }

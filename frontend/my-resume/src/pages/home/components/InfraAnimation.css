@@ -1,0 +1,164 @@
+/* src/pages/home/components/InfraAnimation.css */
+
+/* ----- CONTAINER ----- */
+.infra-stage {
+  width: 100%;
+  max-width: 420px;
+  margin: 0;
+}
+
+.infra-stage svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+/* ----- NODE BOXES ----- */
+.infra-stage .node-box {
+  fill: var(--color-bg-surface);
+  stroke: var(--color-border-primary);
+  stroke-width: 1.2;
+  rx: 8;
+  transition: stroke 0.3s ease;
+}
+
+.infra-stage .node-box.client {
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 8px rgba(200, 155, 60, 0.15));
+}
+
+[data-theme="dark"] .infra-stage .node-box.client {
+  filter: drop-shadow(0 0 8px rgba(212, 169, 78, 0.2));
+}
+
+/* ----- TEXT STYLES ----- */
+.infra-stage .node-label {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 10px;
+  fill: var(--color-text-primary);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.infra-stage .node-sub {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 7.5px;
+  fill: var(--color-text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+.infra-stage .node-icon {
+  font-size: 11px;
+  fill: var(--color-accent-primary);
+  text-anchor: middle;
+}
+
+/* ----- EDGES (base) ----- */
+.infra-stage .edge {
+  fill: none;
+  stroke: var(--color-border-primary);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+[data-theme="dark"] .infra-stage .edge {
+  stroke: var(--color-border-primary);
+}
+
+/* ----- FLOW LINES (animated) ----- */
+.infra-stage .flow {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 10;
+  stroke-linecap: round;
+  animation: infra-flow 1.6s linear infinite;
+  opacity: 0.7;
+}
+
+.infra-stage .flow-variant {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 12;
+  stroke-linecap: round;
+  animation: infra-flow 2.2s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes infra-flow {
+  to { stroke-dashoffset: -120; }
+}
+
+/* ----- PULSE ANIMATION (rings around nodes) ----- */
+.infra-stage .pulse-ring {
+  fill: none;
+  stroke: var(--color-accent-primary);
+  stroke-width: 1.5;
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.infra-stage .n-client .pulse-ring { animation: infra-pulse 3s ease-out infinite; }
+.infra-stage .n-cdn .pulse-ring { animation: infra-pulse 3s ease-out infinite 0.5s; }
+.infra-stage .n-gateway .pulse-ring { animation: infra-pulse 3s ease-out infinite 1.0s; }
+.infra-stage .n-queue .pulse-ring { animation: infra-pulse 3s ease-out infinite 1.5s; }
+.infra-stage .n-db .pulse-ring { animation: infra-pulse 3s ease-out infinite 2.0s; }
+.infra-stage .n-ai .pulse-ring { animation: infra-pulse 3s ease-out infinite 2.5s; }
+
+@keyframes infra-pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* ----- TRAVELING DOTS (data packets) ----- */
+.infra-stage .dot {
+  fill: var(--color-accent-primary);
+}
+
+/* Path 1: Client → CDN (randomized timing via animation-delay on each dot) */
+.infra-stage .dot-a1 { offset-path: path('M 80,90 L 80,140'); animation: infra-run 1.8s linear infinite; }
+.infra-stage .dot-a2 { offset-path: path('M 80,90 L 80,140'); animation: infra-run 1.8s linear infinite 0.5s; }
+
+/* Path 2: CDN → API Gateway */
+.infra-stage .dot-b1 { offset-path: path('M 80,170 C 80,220 200,220 200,180'); animation: infra-run 2.6s linear infinite; }
+.infra-stage .dot-b2 { offset-path: path('M 80,170 C 80,220 200,220 200,180'); animation: infra-run 2.6s linear infinite 1.0s; }
+
+/* Path 3: API Gateway → Message Queue */
+.infra-stage .dot-c1 { offset-path: path('M 200,200 L 200,260'); animation: infra-run 2.0s linear infinite; }
+.infra-stage .dot-c2 { offset-path: path('M 200,200 L 200,260'); animation: infra-run 2.0s linear infinite 0.7s; }
+
+/* Path 4: Message Queue → DB */
+.infra-stage .dot-d1 { offset-path: path('M 240,320 C 280,320 320,300 320,270'); animation: infra-run 2.4s linear infinite; }
+.infra-stage .dot-d2 { offset-path: path('M 240,320 C 280,320 320,300 320,270'); animation: infra-run 2.4s linear infinite 0.9s; }
+
+/* Path 5: Message Queue → AI */
+.infra-stage .dot-e1 { offset-path: path('M 160,320 C 120,320 80,300 80,270'); animation: infra-run 2.2s linear infinite 0.3s; }
+.infra-stage .dot-e2 { offset-path: path('M 160,320 C 120,320 80,300 80,270'); animation: infra-run 2.2s linear infinite 1.2s; }
+
+/* Path 6: AI → DB (feedback loop) */
+.infra-stage .dot-f1 { offset-path: path('M 80,250 C 120,220 200,220 320,250'); animation: infra-run 3.0s linear infinite 0.6s; }
+
+@keyframes infra-run {
+  0% { offset-distance: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+/* ----- REDUCED MOTION ----- */
+@media (prefers-reduced-motion: reduce) {
+  .infra-stage .flow,
+  .infra-stage .flow-variant,
+  .infra-stage .pulse-ring,
+  .infra-stage [class*="dot-"] {
+    animation: none !important;
+  }
+  
+  .infra-stage .dot {
+    opacity: 0;
+  }
+}

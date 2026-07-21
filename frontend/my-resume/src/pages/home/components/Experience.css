@@ -1,7 +1,6 @@
 /* src/pages/home/Experience.css */
 
 .experience-section {
-  padding: var(--section-padding-y) var(--section-padding-x);
   width: 100%;
   background: transparent;
   position: relative;
@@ -26,6 +25,16 @@
   text-wrap: balance;
 }
 
+.experience-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-3xl);
+  max-width: 55ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ===========================
    Card
 =========================== */
@@ -43,7 +52,7 @@
 .experience-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--card-shadow-hover);
-  border-color: var(--color-accent-primary);
+  border-color: var(--color-accent-secondary);
 }
 
 /* ===========================
@@ -54,6 +63,8 @@
   display: flex;
   align-items: flex-start;
   gap: 20px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .company-logo-wrapper {
@@ -199,7 +210,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--color-accent-primary);
+  color: var(--color-accent-secondary);
   font-weight: 600;
 }
 
@@ -240,10 +251,6 @@
 
 @media (max-width: 768px) {
 
-  .experience-section {
-    padding: var(--space-4xl) var(--section-padding-x);
-  }
-
   .experience-container {
     width: 100%;
   }
@@ -279,10 +286,6 @@
 }
 
 @media (max-width: 480px) {
-
-  .experience-section {
-    padding: var(--space-3xl) var(--section-padding-x);
-  }
 
   .experience-card {
     padding: 18px;

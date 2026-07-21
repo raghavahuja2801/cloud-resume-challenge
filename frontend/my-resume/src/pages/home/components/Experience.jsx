@@ -59,10 +59,20 @@ const Experience = () => {
     <section id="experience" className="experience-section">
       <div className="experience-container">
         <h2 className="experience-title">Experience</h2>
+        <p classname="experience-subtitle">
+          My professional journey as a Full Stack Engineer and Software Developer.
+        </p>
 
         {experiences.map((exp) => (
           <div key={exp.id} className="experience-card">
-            <div className="experience-header">
+            <div
+              className="experience-header"
+              onClick={() => toggleExpand(exp.id)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') toggleExpand(exp.id); }}
+              aria-expanded={!!expandedItems[exp.id]}
+            >
               {/* Company Logo */}
               <div className="company-logo-wrapper">
                 <img

@@ -1,0 +1,100 @@
+/* src/components/TerminalHero.css */
+
+.term-card {
+  width: 100%;
+  max-width: 560px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-bg-elevated);
+  font-family: var(--font-mono);
+}
+
+/* ----- Title Bar ----- */
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.term-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.term-dot--red { background: #ec6a5e; }
+.term-dot--yellow { background: #f4bf4f; }
+.term-dot--green { background: #61c454; }
+
+.term-label {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  font-family: var(--font-mono);
+}
+
+/* ----- Body ----- */
+.term-body {
+  padding: 16px 18px;
+  min-height: 170px;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  background: var(--color-bg-elevated);
+}
+
+.term-line {
+  margin-bottom: 4px;
+  min-height: 1.7em;
+}
+
+.term-line:last-child {
+  margin-bottom: 0;
+}
+
+/* Reserve 2 rows for the current line (prompt + output) to prevent height jank */
+.term-line--current {
+  min-height: 3.4em;
+}
+
+.term-line--current .term-output-placeholder {
+  display: block;
+  min-height: 1.7em;
+  visibility: hidden;
+}
+
+.term-prompt {
+  color: var(--color-accent-primary);
+  font-weight: 600;
+}
+
+.term-cmd {
+  color: var(--color-accent-success);
+}
+
+.term-output {
+  color: var(--color-text-tertiary);
+  padding-left: 16px;
+}
+
+.term-cursor {
+  display: inline-block;
+  color: var(--color-accent-primary);
+  animation: term-blink 0.8s step-end infinite;
+  font-weight: 300;
+}
+
+@keyframes term-blink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .term-cursor {
+    animation: none;
+    opacity: 1;
+  }
+}

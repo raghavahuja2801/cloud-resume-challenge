@@ -59,7 +59,7 @@ const Experience = () => {
     <section id="experience" className="experience-section">
       <div className="experience-container">
         <h2 className="experience-title">Experience</h2>
-        <p classname="experience-subtitle">
+        <p className="experience-subtitle">
           My professional journey as a Full Stack Engineer and Software Developer.
         </p>
 

@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     max-width: 1400px;
-    width: calc(100% - 48px);
+    width: 90%;
     margin: auto;
     display: flex;
     align-items: center;

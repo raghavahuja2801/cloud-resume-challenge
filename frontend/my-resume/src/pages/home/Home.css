@@ -97,9 +97,9 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: flex-start;
-  padding: 5rem 2rem 2rem;
+  padding: 5rem;
 }
 
 /* ============================================
@@ -111,9 +111,6 @@
   margin: 0 auto;
 }
 
-.section {
-  width: 100%;
-}
 
 /* Two-column layout */
 .hero-layout {
@@ -501,7 +498,7 @@
 /* Add to Home.css - Section styles */
 
 .section {
-  padding: 4rem 24px;
+  padding: 4rem 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

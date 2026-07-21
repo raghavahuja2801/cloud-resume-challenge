@@ -107,8 +107,7 @@
    ============================================ */
 
 .hero {
-  max-width: 1400px;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -409,7 +408,7 @@
 
 @media (max-width: 768px) {
   .home-container {
-    padding: 1.5rem;
+    padding: 1rem;
     align-items: flex-start;
     padding-top: 5rem;
   }

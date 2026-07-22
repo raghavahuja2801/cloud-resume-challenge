@@ -5,7 +5,7 @@ import HorizonZonesLogo from '../assets/horizon-zones-logo.png';
 import './Experience.css';
 
 const Experience = () => {
-  const [expandedItems, setExpandedItems] = useState({});
+  const [expandedItems, setExpandedItems] = useState({ 1: true });
 
   const toggleExpand = (id) => {
     setExpandedItems(prev => ({
@@ -156,9 +156,9 @@ const Experience = () => {
 
                 <div className="technologies-section">
                   <h4 className="technologies-heading">Technologies used</h4>
-                  <div className="tech-tags">
+                  <div className="project-tags">
                     {exp.technologies.map((tech, index) => (
-                      <span key={index} className="tech-tag">
+                      <span key={index} className="project-tag">
                         {tech}
                       </span>
                     ))}

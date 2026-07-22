@@ -36,7 +36,7 @@ const Resume = () => {
                                     Download PDF
                                 </a>
                                 <a 
-                                    href="https://linkedin.com/in/raghavahuja" 
+                                    href="https://www.linkedin.com/in/ahuja-raghav/" 
                                     className="resume-btn resume-btn-secondary"
                                     target="_blank"
                                     rel="noopener noreferrer"

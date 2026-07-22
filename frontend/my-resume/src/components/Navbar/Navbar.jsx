@@ -5,7 +5,6 @@ import ThemeToggle from "./ThemeToggle";
 import "./Navbar.css";
 
 const navItems = [
-  { id: "home", label: "Home" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   {id: "skills", label: "Skills" },

@@ -1,7 +1,7 @@
 // src/pages/home/Contact.jsx
 import React, { useState } from 'react';
 import './Contact.css';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter, FaCheckCircle } from 'react-icons/fa';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +9,9 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [submitted, setSubmitted] = useState(false);
+
+  const [sending, setSending] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -17,10 +20,23 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setSending(true);
+    try {
+      const res = await fetch('https://formspree.io/f/xjgnodgp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      }
+    } catch {
+      // fall through — form stays as-is on error
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -35,51 +51,63 @@ const Contact = () => {
           {/* Left Column - Contact Form */}
           <div className="contact-form-wrapper">
             <div className="contact-card">
-              <h3 className="contact-form-title">Send a Message</h3>
-              <form onSubmit={handleSubmit} className="contact-form">
-                <div className="form-group">
-                  <label htmlFor="name" className="form-label">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    className="form-input"
-                    required
-                  />
+              {submitted ? (
+                <div className="contact-success">
+                  <FaCheckCircle className="contact-success-icon" />
+                  <h3 className="contact-success-title">Message Sent!</h3>
+                  <p className="contact-success-text">
+                    Thanks for reaching out! I'll get back to you as soon as possible.
+                  </p>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="email" className="form-label">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your.email@example.com"
-                    className="form-input"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="message" className="form-label">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Your message..."
-                    className="form-textarea"
-                    rows="5"
-                    required
-                  />
-                </div>
-                <button type="submit" className="submit-btn">
-                  Send Message
-                </button>
-              </form>
+              ) : (
+                <>
+                  <h3 className="contact-form-title">Send a Message</h3>
+                  <form onSubmit={handleSubmit} className="contact-form">
+                    <div className="form-group">
+                      <label htmlFor="name" className="form-label">Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Your name"
+                        className="form-input"
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="email" className="form-label">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="your.email@example.com"
+                        className="form-input"
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="message" className="form-label">Message</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Your message..."
+                        className="form-textarea"
+                        rows="5"
+                        required
+                      />
+                    </div>
+                    <button type="submit" className="submit-btn" disabled={sending}>
+                      {sending ? 'Sending...' : 'Send Message'}
+                    </button>
+                  </form>
+                </>
+              )}
             </div>
           </div>
 

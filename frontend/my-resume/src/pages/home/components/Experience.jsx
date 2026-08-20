@@ -27,10 +27,10 @@ const Experience = () => {
       highlight: 'Shipped 6 core primitives for the Inworld Runtime SDK, enabling teams to build and deploy AI agents without custom orchestration or workflow logic',
       achievements: [
         'Shipped 6 core primitives for the Inworld Runtime SDK (including Knowledge and MCP nodes), enabling teams to build and deploy AI agents without custom orchestration or workflow logic',
-        'Built scalable backend services and REST APIs for billing, credits, subscription tiers, and payment workflows using event-driven architecture, contributing to a 20% increase in B2C revenue',
+        'Developed Inworld\'s first self-service billing experience using Next.js, TypeScript, React Query, Redux, replacing manual billing workflows with self-service credit purchasing, subscription management, usage tracking, and pricing tiers',
         'Integrated Ultravox into the Realtime API by extending streaming and multimodal pipelines, enabling low-latency voice-based interactions for end users',
         'Reduced LLM cost-per-request by 20% and improved reliability by 15% through Inworld Routers, enabling cost and latency-aware model selection with automatic failover across a unified API endpoint',
-        'Designed asynchronous event-driven workflows using Pub/Sub, enabling scalable communication between distributed backend services while reducing service coupling'
+        'Drove a 20% increase in B2C revenue by optimizing onboarding and billing experiences through A/B testing, feature flags, and Mixpanel analytics, enabling data-driven product decisions and continuous UX improvements'
       ],
       technologies: ['JavaScript', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker', 'Kubernetes', 'REST APIs', 'Pub/Sub']
     },

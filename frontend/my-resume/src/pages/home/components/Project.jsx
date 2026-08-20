@@ -4,7 +4,7 @@ import './Project.css';
 import CloudResume from '../assets/cloud-resume.png';
 import Jotion from '../assets/jotion.png';
 import PodcastAI from '../assets/podcast-ai.png';
-import Disney from '../assets/disney.png';
+import InterviewLab from '../assets/Interview-Lab.png';
 import HomeLab from '../assets/Homelab.png';
 import n8n from '../assets/n8n.png';
 import { FaGithub, FaExternalLinkAlt, FaTimes, FaCode } from 'react-icons/fa';
@@ -44,6 +44,16 @@ const Projects = () => {
       github: "https://github.com/raghavahuja2801/homelab",
     },
     {
+      id: 4,
+      title: "Interview Lab",
+      highlight: "AI-powered system design interviews with real-time voice, collaborative design, and automated evaluation",
+      description: "InterviewLab is a full-stack AI interview platform that simulates system design and LLD interviews using DeepSeek for reasoning, Fish Audio for real-time interviewer voice, and PlantUML for dynamic system design diagrams. It uses Redis Pub/Sub for real-time communication, PostgreSQL and MongoDB for persistent data, and runs as containerized services on K3s.",
+      image: InterviewLab,
+      tags: ["Next.js", "TypeScript", "Express.js", "MongoDB", "Postgres", "Redis"],
+      github: "https://github.com/raghavahuja2801/interview-prep",
+      demo: "https://homelab.taildaa0c8.ts.net/",
+    },
+    {
       id: 6,
       title: "n8n Workflow Automation",
       highlight: "A self-hosted workflow automation solution using n8n and LLMs for seamless job scrapping, scoring and application.",
@@ -72,17 +82,7 @@ const Projects = () => {
       tags: ["React", "Socket.io", "MongoDB", "Express", "Draft.js"],
       github: "https://github.com/raghavahuja2801/Notion-Clone-Nextjs",
       demo: "https://notion-clone-i0qka51dc-raghavahuja2801s-projects.vercel.app/",
-    },
-    {
-      id: 4,
-      title: "Disney Clone",
-      highlight: "A replica of the Disney Plus streaming platform built using React, Firebase, and Styled Components. This project features user authentication, personalized content browsing, and a sleek, responsive UI.",
-      description: "A replica of the Disney Plus streaming platform built using React, Firebase, and Styled Components. This project features user authentication, personalized content browsing, and a sleek, responsive UI. The app leverages Firebase for real-time user data management and login functionality, while Styled Components is used for modern and maintainable styling. Users can sign in, browse through different categories, and view movie or show details seamlessly, emulating the Disney Plus experience.",
-      image: Disney,
-      tags: ["React", "CSS", "Framer Motion"],
-      github: "https://github.com/raghavahuja2801/disneyclone",
-      demo: "https://raghavahuja2801.github.io/disneyclone/",
-    },
+    }
   ];
 
   return (

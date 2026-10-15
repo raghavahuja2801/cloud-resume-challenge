@@ -1,8 +1,36 @@
 // src/pages/home/Experience.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Briefcase, MapPin, Calendar } from 'lucide-react';
 import HorizonZonesLogo from '../assets/horizon-zones-logo.png';
 import './Experience.css';
+
+const fishAudioBars = [
+  [297.1, 299.3, 21.4, 'muted'], [456.7, 249.9, 27.1, 'muted'],
+  [424.7, 256.6, 47.4, 'muted'], [392.9, 264.3, 52.1, 'muted'],
+  [360.9, 270.7, 51.6, 'muted'], [328.9, 276.4, 46, 'muted'],
+  [38.1, 200, 19.4], [71, 202.7, 30.7], [103.9, 198.4, 77.4],
+  [136.9, 192, 20], [136.9, 245.4, 58.3], [168.6, 235.1, 100.8],
+  [200.6, 222.4, 102.2], [232.6, 204.1, 115.8], [264.5, 190.2, 120.1],
+  [297.1, 181.9, 107.1], [328.9, 177, 87.8], [392.9, 178.1, 75.4],
+  [360.9, 175, 86.6], [424.7, 185.2, 60.2], [456.7, 204.1, 38]
+];
+
+const FishAudioMark = () => (
+  <svg className="fish-audio-mark" viewBox="0 0 512 512" role="img" aria-label="Fish Audio logo">
+    {fishAudioBars.map(([x, y, height, tone], index) => (
+      <rect
+        key={`${x}-${y}`}
+        className={`fish-audio-bar ${tone === 'muted' ? 'fish-audio-bar-muted' : ''}`}
+        x={x}
+        y={y}
+        width="16"
+        height={height}
+        rx="8"
+        style={{ '--fish-bar-index': index }}
+      />
+    ))}
+  </svg>
+);
 
 const Experience = () => {
   const [expandedItems, setExpandedItems] = useState({ 1: true });
@@ -17,6 +45,24 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
+      company: 'Fish Audio',
+      logo: 'fish-audio',
+      logoLight: 'fish-audio',
+      role: 'FDE & GTME',
+      location: 'Remote',
+      startDate: 'October 2026',
+      endDate: 'Present',
+      highlight: 'Bridging product engineering and go-to-market execution to help teams build, adopt, and scale voice AI experiences',
+      achievements: [
+        'Partner with customers to turn voice AI use cases into working prototypes, integrations, and production-ready implementations',
+        'Build developer-facing examples, reference architectures, and technical content that shorten the path from first API call to production',
+        'Lead technical discovery and product demos, translating customer feedback into clear product opportunities for engineering and product teams',
+        'Create repeatable launch and enablement workflows that help sales, solutions, and developer communities communicate Fish Audio\'s capabilities with clarity'
+      ],
+      technologies: ['TypeScript', 'React', 'Python', 'Voice AI', 'API Integrations', 'Developer Experience', 'Technical Demos']
+    },
+    {
+      id: 2,
       company: 'InworldAI',
       logo: 'https://mintcdn.com/inworldai/vOWfx6VxWVUNoiWL/logo/light.svg?fit=max&auto=format&n=vOWfx6VxWVUNoiWL&q=85&s=ece32847cf0349a57d2d8c3d23a97cd1',
       logoLight: 'https://mintcdn.com/inworldai/vOWfx6VxWVUNoiWL/logo/dark.svg?fit=max&auto=format&n=vOWfx6VxWVUNoiWL&q=85&s=60df17e32aa7b09eea490ff7a306a6e4',
@@ -35,7 +81,7 @@ const Experience = () => {
       technologies: ['JavaScript', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker', 'Kubernetes', 'REST APIs', 'Pub/Sub']
     },
     {
-      id: 2,
+      id: 3,
       company: 'Horizon Zones International',
       logo: HorizonZonesLogo,
       logoLight: HorizonZonesLogo,
@@ -75,21 +121,27 @@ const Experience = () => {
             >
               {/* Company Logo */}
               <div className="company-logo-wrapper">
-                <img
-                  src={exp.logo || 'https://via.placeholder.com/80/cccccc/808080?text=Logo'}
-                  alt={`${exp.company} logo`}
-                  className="company-logo"
-                  width="80"
-                  height="80"
-                />
-                {exp.logoLight && (
+                {exp.logo === 'fish-audio' ? (
+                  <FishAudioMark />
+                ) : (
                   <img
-                    src={exp.logoLight}
-                    alt={`${exp.company} logo dark`}
-                    className="company-logo-dark"
+                    src={exp.logo || 'https://via.placeholder.com/80/cccccc/808080?text=Logo'}
+                    alt={`${exp.company} logo`}
+                    className="company-logo"
                     width="80"
                     height="80"
                   />
+                )}
+                {exp.logoLight && (
+                  exp.logoLight === 'fish-audio' ? null : (
+                    <img
+                      src={exp.logoLight}
+                      alt={`${exp.company} logo dark`}
+                      className="company-logo-dark"
+                      width="80"
+                      height="80"
+                    />
+                  )
                 )}
               </div>
 
